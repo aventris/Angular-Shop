@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 100%;
+
+  background-color: rgb(255, 235, 239);
+}
+
+.products {
+  margin: 0 auto;
+  padding: 2px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+  grid-gap: 15px;
+
+  justify-content: center;
+  align-items: center;
+}

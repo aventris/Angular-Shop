@@ -1,0 +1,9 @@
+<div *ngIf="loading; else loading" class="products">
+  <app-product-item
+    [product]="productItem"
+    *ngFor="let productItem of products"
+  ></app-product-item>
+</div>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

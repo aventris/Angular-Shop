@@ -1,0 +1,15 @@
+<div class="product">
+  <h2>{{ product.title }}</h2>
+  <img class="product__image" [src]="product.image" alt="Product-image" />
+  <p class="product__category">{{ product.category }}</p>
+  <span class="product__description">
+    {{ product.description }}
+  </span>
+  <div>
+    <p>{{ product.price | currency }}</p>
+    <button>
+      <img src="assets/icons/shopping_cart.svg" alt="shopping cart icon" />
+      <p>Add to cart</p>
+    </button>
+  </div>
+</div>
