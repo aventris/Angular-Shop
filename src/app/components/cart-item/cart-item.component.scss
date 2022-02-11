@@ -1,0 +1,85 @@
+.cartview {
+  &__revome-item {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  &__item-price {
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    & > p {
+      width: 50px;
+      margin: 0;
+    }
+  }
+
+  &__quantity {
+    width: 30px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    p {
+      margin: 0;
+    }
+    img {
+      width: 8px;
+      height: 8px;
+      cursor: pointer;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  &__info {
+    display: flex;
+    margin: 8px 0;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+    p {
+      width: 100%;
+      padding: 0 8px;
+      font-size: 12px;
+      color: grey;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      white-space: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__item {
+    position: relative;
+    background-color: white;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px grey;
+  }
+  &__item-name {
+    margin: 0;
+    padding: 0 20px 0 0;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__item-total {
+    text-align: right;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+  }
+}

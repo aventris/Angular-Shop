@@ -1,13 +1,13 @@
 <nav class="header">
   <div class="header__mobile">
-    <img src="" alt="menu_icon" />
+    <img src="assets/icons/logo_yard_sale.svg" alt="menu_icon" />
     <ul>
       <li>Item 1</li>
       <li>Item 1</li>
       <li>Item 1</li>
     </ul>
   </div>
-  <img src="" alt="store_icon" />
+  <img src="assets/icons/logo_yard_sale.svg" alt="store_icon" />
   <div class="header__desktop">
     <ul>
       <li>Item 1</li>
@@ -17,10 +17,14 @@
   </div>
   <div class="header__user">
     <p>elcaballerooscuro@live.com.mx</p>
-    <img src="" alt="user_icon" />
-    <div class="header__cart">
+    <img src="assets/icons/default_avatar.svg" alt="user_icon" />
+    <div class="header__cart" (click)="toggleCart()">
       <img src="assets/icons/shoppong_cart_icon.svg" alt="user_icon" />
-      <p>99</p>
+      <p *ngIf="totalProducts">{{ totalProducts | truncatecart }}</p>
     </div>
   </div>
 </nav>
+<app-cart-list
+  *ngIf="cartIsOpen"
+  (toggleCart)="closeCart($event)"
+></app-cart-list>

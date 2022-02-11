@@ -1,0 +1,20 @@
+<div class="cartview">
+  <p class="">Product list</p>
+  <img
+    class="cartview__close"
+    src="assets/icons/close_icon.svg"
+    alt=""
+    (click)="onClose()"
+  />
+  <div class="cartview__products">
+    <app-cart-item
+      *ngFor="let product of products"
+      [product]="product"
+    ></app-cart-item>
+  </div>
+  <div class="cartview__total">
+    <p>Total:&nbsp;&nbsp;&nbsp;</p>
+    <p>{{ this.total | currency }}</p>
+  </div>
+  <button>Buy</button>
+</div>

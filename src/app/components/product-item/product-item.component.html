@@ -7,7 +7,7 @@
   </span>
   <div>
     <p>{{ product.price | currency }}</p>
-    <button>
+    <button (click)="addToCart()">
       <img src="assets/icons/shopping_cart.svg" alt="shopping cart icon" />
       <p>Add to cart</p>
     </button>
