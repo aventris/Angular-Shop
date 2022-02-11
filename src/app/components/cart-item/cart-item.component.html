@@ -8,7 +8,9 @@
   <p class="cartview__item-name">{{ product.title }}</p>
   <div class="cartview__info">
     <img [src]="product.image" alt="" />
-    <p>{{ product.description }}</p>
+    <div>
+      <p>{{ product.description }}</p>
+    </div>
   </div>
   <div class="cartview__item-price">
     <p>{{ product.price | currency }}</p>
@@ -29,7 +31,8 @@
     </div>
   </div>
   <hr />
-  <p class="cartview__item-total">
-    Subtotal: {{ product.price * product.quantity | currency }}
-  </p>
+  <div class="cartview__item-total">
+    <p>Subtotal:</p>
+    <p>{{ product.price * product.quantity | currency }}</p>
+  </div>
 </div>

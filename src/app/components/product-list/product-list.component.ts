@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
-import { StoreApiService } from '../../services/products.service';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-product-list',
@@ -11,10 +11,10 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   loading: boolean = true;
 
-  constructor(private storeApiService: StoreApiService) {}
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.storeApiService.getAll().subscribe((data) => {
+    this.productsService.getAll().subscribe((data) => {
       console.log(data);
       this.products = data;
       this.loading = false;

@@ -24,7 +24,6 @@
   }
   &__products {
     height: 80%;
-    background-color: aquamarine;
     overflow-y: auto;
     &::-webkit-scrollbar {
       width: 4px;
@@ -39,6 +38,12 @@
       background-color: #838383;
       //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
     }
+  }
+  &__no-products {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__total {

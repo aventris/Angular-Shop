@@ -1,7 +1,7 @@
 .product {
   width: 100%;
 
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 5px 5px 10px rgb(180, 180, 180);
   padding: 10px;
   h2 {
@@ -13,6 +13,7 @@
     width: 100px;
     height: 100px;
     margin: 0 auto;
+    cursor: pointer;
   }
   &__category {
     color: grey;
@@ -33,7 +34,7 @@
     button {
       height: 30px;
       width: 120px;
-      background-color: #00ff00;
+      background-color: #acd9b2;
       border-radius: 2px;
       border: none;
       box-shadow: 0 0 2px grey;
@@ -41,6 +42,9 @@
       align-items: center;
       color: white;
       cursor: pointer;
+      &:hover {
+        box-shadow: 0 0 2px grey;
+      }
       p {
         margin: 0;
         font-weight: bold;

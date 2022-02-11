@@ -6,12 +6,17 @@
     alt=""
     (click)="onClose()"
   />
-  <div class="cartview__products">
+  <div class="cartview__products" *ngIf="products.length > 0; else noProducts">
     <app-cart-item
       *ngFor="let product of products"
       [product]="product"
     ></app-cart-item>
   </div>
+  <ng-template #noProducts>
+    <div class="cartview__no-products">
+      <p>No products</p>
+    </div>
+  </ng-template>
   <div class="cartview__total">
     <p>Total:&nbsp;&nbsp;&nbsp;</p>
     <p>{{ this.total | currency }}</p>

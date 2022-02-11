@@ -8,7 +8,7 @@ const apiUrl = 'https://fakestoreapi.com/products';
 @Injectable({
   providedIn: 'root',
 })
-export class StoreApiService {
+export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getAll() {
@@ -16,6 +16,7 @@ export class StoreApiService {
   }
 
   getOne(id: string) {
+    console.log(`${apiUrl}/${id}`);
     return this.http.get<Product>(`${apiUrl}/${id}`);
   }
 }
