@@ -1,0 +1,45 @@
+<div class="order">
+  <div class="order__products" *ngIf="products.length > 0; else noProducts">
+    <div class="order__product" *ngFor="let product of products">
+      <div class="order__product-image">
+        <img [src]="product.image" alt="" />
+      </div>
+      <div class="order__product-info">
+        <h3 class="order__product-title">{{ product.title }}</h3>
+        <p class="order__product-status">Available</p>
+        <p class="order__product-description">{{ product.description }}</p>
+        <p class="order__product-price">
+          Price: <b>{{ product.quantity | currency }}</b>
+        </p>
+        <div class="order__product-menu">
+          <div class="order__product-quantity">
+            <p>{{ product.quantity }}</p>
+            <div>
+              <img
+                (click)="increaseQuantity(product.id)"
+                src="assets/icons/up-flat-arrow.png"
+                alt=""
+              />
+              <img
+                (click)="decreaseQuantity(product.id)"
+                src="assets/icons/down-flat-arrow.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <p (click)="removeProduct(product.id)">Eliminar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noProducts>
+    <p class="order__empty-cart">There are no products in the cart</p>
+  </ng-template>
+  <div class="order__total">
+    <div>
+      <p>Subtotal:</p>
+      <p>{{ getTotal() | currency }}</p>
+    </div>
+    <button>Proceed to checkout</button>
+  </div>
+</div>

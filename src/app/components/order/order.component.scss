@@ -1,0 +1,128 @@
+$green-color: #acd9b2;
+
+.order {
+  width: 100%;
+  padding: 20px;
+
+  &__products {
+    max-width: 700px;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: rgb(236, 236, 236);
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+  &__product {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    background-color: white;
+    box-shadow: 1px 1px 3px rgb(182, 182, 182);
+    margin: 10px 0;
+
+    &-image {
+      display: block;
+      width: 20%;
+      flex-grow: 1;
+      img {
+        padding: 5px;
+        width: 100%;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    &-info {
+      width: 80%;
+      padding: 0 10px;
+      flex-grow: 2;
+    }
+    &-title {
+      margin: 10px 0 0 0;
+    }
+    &-status {
+      color: #007600;
+      margin-bottom: 10px;
+      font-size: 12px;
+      margin: 0 0 10px 0;
+    }
+    &-description {
+      color: #7c7c7c;
+      font-size: 12px;
+    }
+    &-price {
+      text-align: right;
+    }
+    &-menu {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+      p:last-child {
+        padding-left: 10px;
+        color: #007185;
+        border-left: 1px solid lightgrey;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    &-quantity {
+      color: #565959;
+      display: flex;
+      margin-right: 10px;
+      p {
+        text-align: right;
+        height: 20px;
+        line-height: 20px;
+        font-size: 18px;
+        width: 20px;
+        margin-right: 5px;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 8px;
+          width: 8px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &__empty-cart {
+    text-align: center;
+  }
+  &__total {
+    max-width: 700px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: rgb(236, 236, 236);
+    text-align: center;
+    div {
+      display: flex;
+      justify-content: center;
+      p:last-child {
+        margin-left: 10px;
+        font-weight: bold;
+      }
+    }
+    button {
+      width: 150px;
+      height: 40px;
+      margin: 0 0 10px 0;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      background-color: $green-color;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0 0 2px grey;
+      }
+    }
+  }
+}

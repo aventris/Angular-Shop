@@ -1,3 +1,4 @@
+$green-color: #acd9b2;
 .cartview {
   width: 300px;
   height: 100%;
@@ -51,5 +52,19 @@
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
+  }
+  button {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    background-color: $green-color;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 2px grey;
+    }
   }
 }

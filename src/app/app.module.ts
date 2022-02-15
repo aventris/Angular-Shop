@@ -12,6 +12,10 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { TruncatecartPipe } from './pipes/truncatecart.pipe';
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { OrderComponent } from './components/order/order.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,10 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
     TruncatecartPipe,
     CartListComponent,
     CartItemComponent,
+    LoginComponent,
+    UserProfileComponent,
+    OrderComponent,
+    PaymentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
