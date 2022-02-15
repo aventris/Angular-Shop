@@ -9,4 +9,7 @@ body {
   padding: 0;
 }
 
-$test-color: red;
+:root {
+  --color-green: #acd9b2;
+  --card-shadow: #a0a0a0;
+}
