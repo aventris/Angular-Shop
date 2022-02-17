@@ -22,6 +22,12 @@ import { OrderPreviewComponent } from './components/order-preview/order-preview.
 import { OrderAddressComponent } from './components/order-address/order-address.component';
 
 import { FormsModule } from '@angular/forms';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { UserAddressComponent } from './components/user-address/user-address.component';
+import { UserPasswordComponent } from './components/user-password/user-password.component';
+import { UserOrdersComponent } from './components/user-orders/user-orders.component';
+import { UserAdminComponent } from './components/user-admin/user-admin.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +48,12 @@ import { FormsModule } from '@angular/forms';
     CheckoutComponent,
     OrderPreviewComponent,
     OrderAddressComponent,
+    UserInfoComponent,
+    UserAddressComponent,
+    UserPasswordComponent,
+    UserOrdersComponent,
+    UserAdminComponent,
+    LayoutComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

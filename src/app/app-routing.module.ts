@@ -9,39 +9,53 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
+import { CmsModule } from './cms/cms.module';
+import { LayoutComponent } from './components/layout/layout.component';
+
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'home',
+        component: ProductListComponent,
+      },
+      {
+        path: 'product/:id',
+        component: ProductDetailsComponent,
+      },
+      {
+        path: 'user/profile',
+        component: UserProfileComponent,
+      },
+      {
+        path: 'order',
+        component: OrderComponent,
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+      },
+    ],
   },
+
   {
-    path: 'home',
-    component: ProductListComponent,
-  },
-  {
-    path: 'product/:id',
-    component: ProductDetailsComponent,
-  },
-  {
-    path: 'user/profile',
-    component: UserProfileComponent,
-  },
-  {
-    path: 'order',
-    component: OrderComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'checkout',
-    component: CheckoutComponent,
+    path: 'admin',
+    loadChildren: () => import('./cms/cms.module').then((m) => m.CmsModule),
   },
   /* {
     path: 'cart',

@@ -22,16 +22,12 @@ export class StoreService {
         quantity: this.shoppingCart[index].quantity + 1,
       };
     }
-    console.log(JSON.stringify(this.shoppingCart));
     this.cart.next(this.shoppingCart);
   }
 
   removeProduct(id: string) {
-    console.log(this.shoppingCart);
     let index = this.shoppingCart.findIndex((item) => item.id === id);
-    console.log(index);
     this.shoppingCart.splice(index, 1);
-    console.log(this.shoppingCart);
     this.cart.next(this.shoppingCart);
   }
 

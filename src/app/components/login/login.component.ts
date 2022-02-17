@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 import { environment } from '../../../environments/environment';
@@ -9,8 +9,8 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  userType: boolean | null = false;
-  constructor(private user: UserService) {}
+  userType: boolean | null = true;
+  constructor(private user: UserService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
       : environment.USER_PASSWORD;
     const id = this.userType ? environment.ADMIN_USER_ID : environment.USER_ID;
 
-    this.user.login(user, password, id).subscribe();
+    this.user.login(user, password, id).subscribe((_) => {
+      this.router.navigateByUrl('/home');
+    });
   }
 }

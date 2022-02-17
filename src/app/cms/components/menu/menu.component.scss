@@ -1,0 +1,23 @@
+@use "/src/vars" as v;
+
+$li-height: 30px;
+.menu {
+  width: 200px;
+  height: 100vh;
+  border: 1px solid black;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      text-align: center;
+      height: $li-height;
+      line-height: $li-height;
+      cursor: pointer;
+      &:hover {
+        box-shadow: var(--box-shadow);
+      }
+    }
+  }
+}

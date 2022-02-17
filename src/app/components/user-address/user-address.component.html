@@ -1,0 +1,47 @@
+<h2 class="user-title">Address infomration</h2>
+<div class="address" *ngIf="user">
+  <div>
+    <form action="">
+      <div class="form-input">
+        <input
+          name="city"
+          type="text"
+          name="email"
+          placeholder="_"
+          [(ngModel)]="user.address.city"
+        />
+        <label for="">City</label>
+      </div>
+      <div class="form-input">
+        <input
+          name="street"
+          type="text"
+          placeholder="_"
+          [(ngModel)]="user.address.street"
+        />
+        <label for="">Address</label>
+        <span>Example: Moth bulevar 103-C </span>
+      </div>
+      <div class="form-input">
+        <input
+          name="number"
+          type="text"
+          placeholder="_"
+          [(ngModel)]="user.address.number"
+        />
+        <label for="">Apartment,suite,etc.</label>
+        <span>Example: 3rd floor </span>
+      </div>
+      <div class="form-input">
+        <input
+          name="zip"
+          type="text"
+          placeholder="_"
+          value="green house right on the corner"
+        />
+        <label for="">Zipcode</label>
+      </div>
+    </form>
+    <button class="button">Edit address</button>
+  </div>
+</div>

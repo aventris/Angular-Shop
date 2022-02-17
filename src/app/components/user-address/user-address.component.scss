@@ -1,0 +1,16 @@
+.address {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    width: 100%;
+    max-width: 400px;
+    button {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

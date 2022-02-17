@@ -19,15 +19,15 @@ export class HeaderComponent implements OnInit {
   user: User | null = null;
 
   ngOnInit(): void {
+    this.userService.user$.subscribe((data) => {
+      this.user = data;
+      console.log(data);
+    });
     this.storeService.shoppingCart$.subscribe((data) => {
       this.totalProducts = data.reduce(
         (acc, product) => product.quantity + acc,
         0
       );
-    });
-
-    this.userService.getProfile().subscribe((data) => {
-      data;
     });
   }
 

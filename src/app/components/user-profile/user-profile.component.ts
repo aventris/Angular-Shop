@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Md5 } from 'ts-md5';
-import { User } from '../../models/user.model';
+import { ActivatedRoute } from '@angular/router';
 
+import { User } from '../../models/user.model';
+import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -10,27 +12,37 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-  avatarUrl: string | null = null;
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
   user: User | null = null;
-  sPassword = '';
-  password = '';
+  isAdmin = false;
+  public tab = '';
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((data) => {
+      this.tab = data['tab'];
+    });
     this.userService.user$.subscribe((data) => {
       if (data) {
-        this.getAvatarHash(data.email);
+        console.log(data);
         this.user = data;
+        if (data.id === environment.ADMIN_USER_ID) {
+          this.isAdmin = true;
+        }
       }
     });
-    if (this.user) {
-    }
   }
 
-  getAvatarHash(email: string) {
-    let hash = email.trim();
-    hash = hash.toLowerCase();
-    hash = Md5.hashStr(hash);
-    this.avatarUrl = 'https://www.gravatar.com/avatar/' + hash + '?d=identicon';
+  logout() {
+    this.userService.logout();
+    this.router.navigateByUrl('/home');
   }
+
+  onTabChange = (id: string) => {
+    this.tab = id;
+    this.router.navigate(['/user/profile'], { queryParams: { tab: id } });
+  };
 }

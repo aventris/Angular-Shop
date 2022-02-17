@@ -1,0 +1,31 @@
+<h2 class="user-title">{{ user.name.firstname + "'s profile" }}</h2>
+<div class="info" *ngIf="user">
+  <img [src]="avatarUrl" alt="profile-image" class="info__image" />
+  <div>
+    <div class="form-input">
+      <input type="text" placeholder="_" [(ngModel)]="user.name.firstname" />
+      <label for="">First name</label>
+    </div>
+    <div class="form-input">
+      <input type="text" placeholder="_" [(ngModel)]="user.name.lastname" />
+      <label for="">Last name</label>
+    </div>
+  </div>
+  <div class="form-input">
+    <input type="text" placeholder="_" [(ngModel)]="user.username" />
+    <label for="">Username</label>
+  </div>
+  <div class="form-input">
+    <input type="text" placeholder="_" [(ngModel)]="user.email" />
+    <label for="">Email</label>
+  </div>
+  <div class="form-input">
+    <input type="text" placeholder="_" [(ngModel)]="user.phone" />
+    <label for="">Phone</label>
+  </div>
+  <div class="form-input">
+    <input disabled value="********" type="text" />
+    <label for="">Password</label>
+    <a (click)="onClick()">Change password</a>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.info {
+  width: 400px;
+  margin: 0 auto;
+  div {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+  }
+  &__image {
+    display: block;
+    margin: 20px auto;
+  }
+}

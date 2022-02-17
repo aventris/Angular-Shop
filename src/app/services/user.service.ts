@@ -20,22 +20,28 @@ export class UserService {
   private user = new BehaviorSubject<User | null>(null);
   user$ = this.user.asObservable();
 
-  login(username: string, password: string, id: string) {
+  login(username: string, password: string, id: number) {
     console.log({ username, password });
     return this.http
       .post<Auth>(`${API}/auth/login`, { username, password })
       .pipe(tap((response) => this.saveToken(response.token, id)));
   }
 
-  saveToken(token: string, id: string) {
-    console.log('saving token...');
+  logout() {
+    this.deleteToken();
+    this.user.next(null);
+  }
+
+  saveToken(token: string, id: number) {
     this.cookieService.set('USER_TOKEN', token);
-    this.cookieService.set('USER_ID', id); // User
+    this.cookieService.set('USER_ID', id.toString()); // User
     this.token = token;
+    this.getProfile();
   }
   deleteToken() {
-    this.cookieService.delete('USER_TOKEN');
-    this.cookieService.delete('USER_ID');
+    this.cookieService.delete('USER_TOKEN', '/');
+    this.cookieService.delete('USER_ID', '/');
+    this.cookieService.deleteAll();
   }
 
   getToken() {
@@ -47,8 +53,8 @@ export class UserService {
 
   getProfile() {
     const id = this.cookieService.get('USER_ID');
-    return this.http
+    this.http
       .get<User>(`${API}/users/${id}`)
-      .pipe(tap((data) => this.user.next(data)));
+      .subscribe((data) => this.user.next(data));
   }
 }

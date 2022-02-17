@@ -1,0 +1,42 @@
+<div class="products">
+  <h2 class="tittle">Product list</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>image</th>
+        <th>Price</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td><img class="product_image" [src]="product.image" alt="" /></td>
+        <td>{{ product.price | currency }}</td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.category }}</td>
+        <td>
+          <button>
+            <img src="assets/icons/edit_pencil_icon.svg" alt="" /></button
+          ><button>
+            <img src="assets/icons/delete_white.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="100%">
+          <div>
+            <button>{{ "<-" }}</button>
+            <p>1/10</p>
+            <button>{{ "->" }}</button>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
