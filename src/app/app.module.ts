@@ -17,6 +17,11 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { OrderComponent } from './components/order/order.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrderPreviewComponent } from './components/order-preview/order-preview.component';
+import { OrderAddressComponent } from './components/order-address/order-address.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,8 +39,11 @@ import { RegisterComponent } from './components/register/register.component';
     OrderComponent,
     PaymentComponent,
     RegisterComponent,
+    CheckoutComponent,
+    OrderPreviewComponent,
+    OrderAddressComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

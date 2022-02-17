@@ -1,1 +1,119 @@
-<p>user-profile works!</p>
+<div class="profile">
+  <div>
+    <nav class="user-menu">
+      <ul>
+        <li>General information</li>
+        <li>Address</li>
+        <li>Change password</li>
+        <li>Order history</li>
+      </ul>
+    </nav>
+    <div class="user-info">
+      <!-- <div class="info" *ngIf="user">
+        <h2 class="info__tittle">
+          {{ user.name.firstname + "'s profile" }}
+        </h2>
+        <img [src]="avatarUrl" alt="profile-image" class="info__image" />
+        <div>
+          <div class="input">
+            <input
+              type="text"
+              placeholder="_"
+              [(ngModel)]="user.name.firstname"
+            />
+            <label for="">First name</label>
+          </div>
+          <div class="input">
+            <input
+              type="text"
+              placeholder="_"
+              [(ngModel)]="user.name.lastname"
+            />
+            <label for="">Last name</label>
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" [(ngModel)]="user.username" />
+          <label for="">Username</label>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" [(ngModel)]="user.email" />
+          <label for="">Email</label>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" [(ngModel)]="user.phone" />
+          <label for="">Phone</label>
+        </div>
+        <div class="input">
+          <input disabled value="********" type="text" />
+          <label for="">Password</label>
+          <a>Change password</a>
+        </div>
+      </div> -->
+      <!-- <div class="address" *ngIf="user">
+        <div>
+          <form action="">
+            <div class="input">
+              <input
+                name="city"
+                type="text"
+                name="email"
+                placeholder="_"
+                [(ngModel)]="user.address.city"
+              />
+              <label for="">City</label>
+            </div>
+            <div class="input">
+              <input
+                name="street"
+                type="text"
+                placeholder="_"
+                [(ngModel)]="user.address.street"
+              />
+              <label for="">Address</label>
+              <span>Example: Moth bulevar 103-C </span>
+            </div>
+            <div class="input">
+              <input
+                name="number"
+                type="text"
+                placeholder="_"
+                [(ngModel)]="user.address.number"
+              />
+              <label for="">Apartment,suite,etc.</label>
+              <span>Example: 3rd floor </span>
+            </div>
+            <div class="input">
+              <input
+                name="zip"
+                type="text"
+                placeholder="_"
+                value="green house right on the corner"
+              />
+              <label for="">Zipcode</label>
+            </div>
+          </form>
+          <button>Edit address</button>
+        </div>
+      </div> -->
+      <h2 class="info__tittle">Change current password</h2>
+      <div class="password">
+        <div>
+          <div class="input">
+            <input type="text" placeholder="_" />
+            <label for="">Old password</label>
+          </div>
+          <div class="input">
+            <input type="text" placeholder="_" [(ngModel)]="password" />
+            <label for="">New password</label>
+          </div>
+          <div class="input">
+            <input type="text" placeholder="_" [(ngModel)]="sPassword" />
+            <label for="">Repear new password</label>
+          </div>
+          <button>Change</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

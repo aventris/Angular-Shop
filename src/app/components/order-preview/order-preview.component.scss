@@ -1,0 +1,143 @@
+$width: 500px;
+$background-color: #e0e0e0;
+.order-preview {
+  /*   display: flex;
+  align-items: center; */
+}
+
+.shipping {
+  &__container {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    &-row {
+      display: flex;
+      justify-content: space-between;
+      &--last {
+        border-top: 1px solid grey;
+      }
+    }
+  }
+  max-width: $width;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  background-color: $background-color;
+  p {
+    margin: 0;
+    &:first-child {
+      font-weight: bold;
+    }
+  }
+  h3 {
+    margin-top: 0;
+    color: #007185;
+  }
+}
+
+.products {
+  max-width: $width;
+  height: 100%;
+  margin: 0 auto;
+  background-color: $background-color;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+button {
+  display: block;
+  width: 150px;
+  height: 40px;
+  margin: 10px auto;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--green-color);
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 2px grey;
+  }
+}
+.product {
+  border-radius: 10px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  margin: 10px 0;
+
+  &-image {
+    display: block;
+    width: 20%;
+    flex-grow: 1;
+    img {
+      padding: 5px;
+      width: 100%;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  &-info {
+    width: 80%;
+    padding: 0 10px;
+    flex-grow: 2;
+  }
+  &-title {
+    margin: 10px 0 0 0;
+  }
+  &-status {
+    color: #007600;
+    margin-bottom: 10px;
+    font-size: 12px;
+    margin: 0 0 10px 0;
+  }
+  &-description {
+    color: #7c7c7c;
+    font-size: 12px;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &-price {
+    text-align: right;
+  }
+  &-menu {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 0;
+      color: #007185;
+      &:last-child {
+        padding-left: 10px;
+      }
+    }
+  }
+  &-quantity {
+    color: #565959;
+    display: flex;
+    margin-right: 10px;
+    p {
+      text-align: right;
+      height: 20px;
+      line-height: 20px;
+      font-size: 18px;
+      width: 20px;
+      margin-right: 5px;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 8px;
+        width: 8px;
+        cursor: pointer;
+      }
+    }
+  }
+}

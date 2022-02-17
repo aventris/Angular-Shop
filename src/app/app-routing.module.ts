@@ -7,6 +7,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { OrderComponent } from './components/order/order.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
     component: ProductDetailsComponent,
   },
   {
-    path: 'user',
+    path: 'user/profile',
     component: UserProfileComponent,
   },
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
   },
   /* {
     path: 'cart',

@@ -1,0 +1,67 @@
+.checkout {
+  width: 500px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px var(--card-shadow);
+}
+
+.input {
+  min-height: 35px;
+  margin: 0 0 20px 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  input {
+    z-index: 1;
+    background: transparent;
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+    padding: 2px 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid grey;
+    /* background-color: transparent; */
+    &::placeholder {
+      color: transparent;
+    }
+    &:not(:placeholder-shown) ~ label,
+    &:focus ~ label {
+      top: -2px;
+      left: 0;
+      font-size: 12px;
+    }
+  }
+  label {
+    transition: 0.2s;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: grey;
+  }
+  span {
+    position: absolute;
+    bottom: -5px;
+    left: 10px;
+    font-size: 12px;
+    color: grey;
+  }
+}
+h3 {
+  margin-top: 40px;
+}
+button {
+  display: block;
+  width: 150px;
+  height: 40px;
+  margin: 10px auto;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--green-color);
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 2px grey;
+  }
+}

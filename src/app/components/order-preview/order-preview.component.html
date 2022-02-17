@@ -1,0 +1,57 @@
+<div class="order-preview">
+  <div>
+    <div class="products">
+      <div class="product" *ngFor="let product of products">
+        <div class="product-image">
+          <img [src]="product.image" alt="" />
+        </div>
+        <div class="product-info">
+          <h4 class="product-title">{{ product.title }}</h4>
+          <p class="product-status">Available</p>
+          <p class="product-description">{{ product.description }}</p>
+          <div class="product-menu">
+            <p>Qty: {{ product.quantity }}</p>
+            <p class="product-price">
+              Price: <b>{{ product.quantity | currency }}</b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="shipping">
+    <div class="shipping__container">
+      <h3>Ship to</h3>
+      <p><b>Ismael Perez Ortega Oh yeag</b></p>
+      <p><i>33 17 11 57 56</i></p>
+      <p><i>correomamalon-largohijodeputa@hotmail.com</i></p>
+      <br />
+      <p><b>Address</b></p>
+      <p>Av. Poniente 140, Dpto 66-A, 501</p>
+      <p>C.P. 07755</p>
+      <p>Ciudad de mexico, mexico</p>
+      <br />
+      <h3>Order Information</h3>
+      <div class="shipping__container-row">
+        <span>Products:</span>
+        <span>
+          <b>{{ "12000" | currency }}</b>
+        </span>
+      </div>
+      <div class="shipping__container-row">
+        <span>Shipping:</span>
+        <span>
+          <b>{{ "12000" | currency }}</b>
+        </span>
+      </div>
+      <div class="shipping__container-row shipping__container-row--last">
+        <span>Total:</span>
+        <span>
+          <b>{{ "12000" | currency }}</b>
+        </span>
+      </div>
+
+      <button>Procced to payment</button>
+    </div>
+  </div>
+</div>

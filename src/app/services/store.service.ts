@@ -22,6 +22,7 @@ export class StoreService {
         quantity: this.shoppingCart[index].quantity + 1,
       };
     }
+    console.log(JSON.stringify(this.shoppingCart));
     this.cart.next(this.shoppingCart);
   }
 

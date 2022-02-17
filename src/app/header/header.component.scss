@@ -8,8 +8,7 @@ $green-color: #acd9b2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  img {
+  &__logo {
     width: 150px;
     margin: 0 10px;
     height: auto;
@@ -61,8 +60,8 @@ $green-color: #acd9b2;
     padding-right: 5px;
     justify-content: center;
     align-items: center;
+    padding: 1px;
     & > img {
-      margin: 0 10px 0 0;
       padding: 0;
       height: 35px;
       width: 35px;

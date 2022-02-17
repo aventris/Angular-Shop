@@ -1,16 +1,54 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
-const API = 'https://fakestoreapi.com/auth/login';
+import { User } from '../models/user.model';
+import { tap } from 'rxjs/operators';
+
+import { Auth } from '../models/auth.model';
+
+import { CookieService } from 'ngx-cookie-service';
+
+const API = 'https://fakestoreapi.com';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  private token: string | null = null;
+  private user = new BehaviorSubject<User | null>(null);
+  user$ = this.user.asObservable();
 
-  login(username: string, password: string) {
-    console.log('request');
-    return this.http.post(API, { username, password });
+  login(username: string, password: string, id: string) {
+    console.log({ username, password });
+    return this.http
+      .post<Auth>(`${API}/auth/login`, { username, password })
+      .pipe(tap((response) => this.saveToken(response.token, id)));
+  }
+
+  saveToken(token: string, id: string) {
+    console.log('saving token...');
+    this.cookieService.set('USER_TOKEN', token);
+    this.cookieService.set('USER_ID', id); // User
+    this.token = token;
+  }
+  deleteToken() {
+    this.cookieService.delete('USER_TOKEN');
+    this.cookieService.delete('USER_ID');
+  }
+
+  getToken() {
+    const token = this.cookieService.get('USER_TOKEN');
+    const id = this.cookieService.get('USER_ID');
+    if (token && id) return token;
+    return null;
+  }
+
+  getProfile() {
+    const id = this.cookieService.get('USER_ID');
+    return this.http
+      .get<User>(`${API}/users/${id}`)
+      .pipe(tap((data) => this.user.next(data)));
   }
 }

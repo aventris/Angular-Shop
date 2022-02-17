@@ -1,6 +1,7 @@
 <nav class="header">
   <div class="header__mobile">
     <img
+      class="header__logo"
       routerLink="/home"
       src="assets/icons/logo_yard_sale.svg"
       alt="menu_icon"
@@ -12,6 +13,7 @@
     </ul>
   </div>
   <img
+    class="header__logo"
     routerLink="/home"
     src="assets/icons/logo_yard_sale.svg"
     alt="store_icon"
@@ -25,8 +27,12 @@
     </ul>
   </div>
   <div class="header__user">
-    <p routerLink="/login">elcaballerooscuro@live.com.mx</p>
-    <img src="assets/icons/default_avatar.svg" alt="user_icon" />
+    <p *ngIf="this.user" routerLink="/login">{{ this.user.username }}</p>
+    <img
+      routerLink="/user/profile"
+      src="assets/icons/default_avatar.svg"
+      alt="user_icon"
+    />
     <div class="header__cart" (click)="toggleCart()">
       <img src="assets/icons/shoppong_cart_icon.svg" alt="user_icon" />
       <p *ngIf="totalProducts">{{ totalProducts | truncatecart }}</p>
