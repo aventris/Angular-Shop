@@ -28,6 +28,10 @@ import { UserPasswordComponent } from './components/user-password/user-password.
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 import { UserAdminComponent } from './components/user-admin/user-admin.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+
+import { SwiperModule } from 'swiper/angular';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -54,8 +58,16 @@ import { LayoutComponent } from './components/layout/layout.component';
     UserOrdersComponent,
     UserAdminComponent,
     LayoutComponent,
+    ConfirmationModalComponent,
+    FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    SwiperModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

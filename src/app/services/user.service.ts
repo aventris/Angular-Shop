@@ -32,6 +32,13 @@ export class UserService {
     this.user.next(null);
   }
 
+  getAll() {
+    return this.http.get<User[]>(`${API}/users`);
+  }
+  getOne(id: string) {
+    return this.http.get<User>(`${API}/users/${id}`);
+  }
+
   saveToken(token: string, id: number) {
     this.cookieService.set('USER_TOKEN', token);
     this.cookieService.set('USER_ID', id.toString()); // User

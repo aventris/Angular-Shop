@@ -8,7 +8,11 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
+import { OrderFormComponent } from './components/order-form/order-form.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,11 +21,11 @@ import { GeneralInfoComponent } from './components/general-info/general-info.com
     OrdersComponent,
     UsersComponent,
     DashboardComponent,
-    GeneralInfoComponent
+    GeneralInfoComponent,
+    OrderFormComponent,
+    ProductFormComponent,
+    UserFormComponent,
   ],
-  imports: [
-    CommonModule,
-    CmsRoutingModule
-  ]
+  imports: [CommonModule, CmsRoutingModule, FormsModule],
 })
-export class CmsModule { }
+export class CmsModule {}

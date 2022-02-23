@@ -1,0 +1,20 @@
+.footer {
+  background-color: #a3a3a3;
+  margin-top: 10px;
+  padding: 10px;
+  &__content {
+    display: flex;
+    justify-content: space-evenly;
+    div {
+      width: 30%;
+    }
+  }
+  &__copyright {
+    text-align: center;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}

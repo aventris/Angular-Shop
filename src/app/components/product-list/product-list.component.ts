@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/products.service';
 
+import SwiperCore, { Navigation, Autoplay } from 'swiper';
+
+SwiperCore.use([Navigation, Autoplay]);
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',

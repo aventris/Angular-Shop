@@ -1,0 +1,104 @@
+table {
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  padding: 5px;
+  margin: 0 auto;
+  border-spacing: 0;
+  th {
+    padding: 0 5px;
+    text-align: left;
+  }
+  tbody {
+    padding-top: 10px;
+    tr {
+      &:hover {
+        box-shadow: 0 0 2px var(--card-shadow);
+        color: grey;
+      }
+      &:last-child {
+        td {
+          border: none;
+        }
+      }
+      &:first-child {
+        td {
+          border-top: 10px solid white;
+        }
+      }
+      td {
+        border-bottom: 1px solid var(--card-shadow);
+        padding: 0 2px;
+        vertical-align: middle;
+        &:last-child {
+          width: 85px;
+          button {
+            margin: 2px;
+            padding: 1px 10px 2px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            &:first-child {
+              background-color: var(--blue-color);
+            }
+            &:last-child {
+              background-color: red;
+            }
+          }
+          img {
+            vertical-align: middle;
+            height: 15px;
+            width: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.users {
+  padding: 10px;
+  width: 100%;
+}
+
+.title {
+  color: var(--blue-color);
+}
+
+th.column {
+  &_id {
+    width: 50px;
+    text-align: center;
+  }
+  &_user {
+    width: 150px;
+  }
+  &_name {
+    width: 150px;
+  }
+  &_lastname {
+    width: 110px;
+  }
+  &_email {
+    width: 250px;
+  }
+}
+
+.pagination {
+  display: flex;
+  max-width: 120px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    display: block;
+    padding: 2px 5px;
+    width: fit-content;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

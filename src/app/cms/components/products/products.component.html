@@ -1,5 +1,5 @@
 <div class="products">
-  <h2 class="tittle">Product list</h2>
+  <h2 class="tittle">Products list</h2>
   <table>
     <thead>
       <tr>
@@ -19,7 +19,7 @@
         <td>{{ product.title }}</td>
         <td>{{ product.category }}</td>
         <td>
-          <button>
+          <button [routerLink]="['/admin/products/edit', product.id]">
             <img src="assets/icons/edit_pencil_icon.svg" alt="" /></button
           ><button>
             <img src="assets/icons/delete_white.svg" alt="" />
@@ -30,10 +30,14 @@
     <tfoot>
       <tr>
         <th colspan="100%">
-          <div>
-            <button>{{ "<-" }}</button>
+          <div class="pagination">
+            <button>
+              <img src="assets/icons/less_than_icon.svg" alt="" />
+            </button>
             <p>1/10</p>
-            <button>{{ "->" }}</button>
+            <button>
+              <img src="assets/icons/greater_than_icon.svg" alt="" />
+            </button>
           </div>
         </th>
       </tr>

@@ -37,9 +37,18 @@
           name="zip"
           type="text"
           placeholder="_"
-          value="green house right on the corner"
+          [(ngModel)]="user.address.zipcode"
         />
         <label for="">Zipcode</label>
+      </div>
+      <div class="form-input">
+        <input
+          name="zip"
+          type="text"
+          value="green house right on the corner"
+          placeholder="_"
+        />
+        <label for="">Aditional info</label>
       </div>
     </form>
     <button class="button">Edit address</button>

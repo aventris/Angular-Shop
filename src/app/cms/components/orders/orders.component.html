@@ -1,1 +1,37 @@
-<p>orders works!</p>
+<div class="orders">
+  <h2 class="tittle">Users list</h2>
+  <table>
+    <thead>
+      <tr>
+        <th class="column_id">ID</th>
+        <th class="column_user">User ID</th>
+        <th class="column_name">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.userId }}</td>
+        <td>{{ order.date | date }}</td>
+        <td>
+          <button>
+            <img src="assets/icons/edit_pencil_icon.svg" alt="" />
+          </button>
+          <button>
+            <img src="assets/icons/search_icon.svg" alt="" />
+          </button>
+          <button>
+            <img src="assets/icons/delete_white.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="100%">
+          <div></div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>

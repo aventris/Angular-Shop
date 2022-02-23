@@ -1,0 +1,68 @@
+<div class="product">
+  <div *ngIf="product; else noproduct" class="product__form">
+    <h2 class="title">Update product information</h2>
+    <form action="">
+      <div class="form-input">
+        <input
+          disabled
+          name="id"
+          type="text"
+          placeholder="_"
+          [value]="product.id"
+        />
+        <label for="">Product ID</label>
+      </div>
+      <div class="form-input">
+        <input
+          name="name"
+          type="text"
+          placeholder="_"
+          [(ngModel)]="product.title"
+        />
+        <label for="">Product name</label>
+      </div>
+      <div class="form-input">
+        <input
+          name="price"
+          type="text"
+          placeholder="_"
+          [(ngModel)]="product.price"
+        />
+        <label for="">Price</label>
+      </div>
+      <div class="form-input">
+        <input
+          name="category"
+          type="text"
+          placeholder="_"
+          value="green house right on the corner"
+        />
+        <label for="">Category</label>
+      </div>
+      <div class="form-input">
+        <input
+          name="description"
+          type="text"
+          placeholder="_"
+          value="green house right on the corner"
+        />
+        <label for="">Description</label>
+      </div>
+      <div class="input__image">
+        <p>Product image</p>
+        <img [src]="selectedFile || product.image" alt="" />
+        <input
+          name="image"
+          type="file"
+          accept=".png,.jpg,.svg,.jpg,.jpeg"
+          #imageInput
+          (change)="hanldeImageUpload(imageInput)"
+        />
+      </div>
+    </form>
+    <button class="button">Edit product</button>
+  </div>
+  <ng-template #noproduct>
+    <div class="product__no-found">No product with where found</div>
+  </ng-template>
+</div>
