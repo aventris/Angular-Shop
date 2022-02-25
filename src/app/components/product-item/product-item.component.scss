@@ -4,14 +4,15 @@
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgb(180, 180, 180);
   padding: 10px;
-  h2 {
+  &__title {
     text-align: center;
     word-break: break-word;
+    color: var(--blue-color);
   }
   img {
     display: block;
-    width: 100px;
     height: 100px;
+    width: auto;
     margin: 0 auto;
     cursor: pointer;
   }

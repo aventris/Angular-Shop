@@ -11,6 +11,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 
 import { CmsModule } from './cms/cms.module';
 import { LayoutComponent } from './components/layout/layout.component';
+import { CategoryComponent } from './components/category/category.component';
+import { HomeComponent } from './website/pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -24,7 +26,11 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        component: ProductListComponent,
+        component: HomeComponent,
+      },
+      {
+        path: 'category/:id',
+        component: CategoryComponent,
       },
       {
         path: 'product/:id',

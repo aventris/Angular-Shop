@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Product } from '../models/product.model';
 
@@ -18,5 +18,16 @@ export class ProductsService {
   getOne(id: string) {
     console.log(`${apiUrl}/${id}`);
     return this.http.get<Product>(`${apiUrl}/${id}`);
+  }
+
+  getAllByCategory(category: string, offset?: number, limit?: number) {
+    let params = new HttpParams();
+    if (limit !== undefined && offset !== undefined) {
+      params = params.set('limit', limit);
+      params = params.set('offset', offset);
+    }
+    return this.http.get<Product[]>(`${apiUrl}/category/${category}`, {
+      params,
+    });
   }
 }

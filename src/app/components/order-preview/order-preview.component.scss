@@ -3,6 +3,13 @@ $background-color: #e0e0e0;
 .order-preview {
   /*   display: flex;
   align-items: center; */
+  margin-top: 10px;
+  &__invalid {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .shipping {

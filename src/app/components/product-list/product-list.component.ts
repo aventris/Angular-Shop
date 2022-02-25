@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/products.service';
 
@@ -11,15 +11,13 @@ SwiperCore.use([Navigation, Autoplay]);
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
+  @Input() products: Product[] = [];
+  //products: Product[] = [];
   loading: boolean = true;
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.productsService.getAll().subscribe((data) => {
-      this.products = data;
-      this.loading = false;
-    });
+    this.loading = false;
   }
 }

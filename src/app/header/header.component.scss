@@ -31,6 +31,7 @@ $green-color: #acd9b2;
         display: flex;
         flex-direction: row;
         align-items: center;
+        cursor: pointer;
         p {
           margin: 0;
           padding: 0;
@@ -41,7 +42,10 @@ $green-color: #acd9b2;
         &:hover {
           border: 1px solid $green-color;
           color: $green-color;
-          cursor: pointer;
+        }
+        &.active {
+          border: 1px solid $green-color;
+          color: $green-color;
         }
       }
     }

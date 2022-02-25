@@ -40,6 +40,6 @@
       <p>Subtotal:</p>
       <p>{{ getTotal() | currency }}</p>
     </div>
-    <button routerLink="/checkout">Proceed to checkout</button>
+    <button (click)="handleClick()">Proceed to checkout</button>
   </div>
 </div>

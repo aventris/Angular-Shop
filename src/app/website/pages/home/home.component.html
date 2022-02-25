@@ -1,0 +1,15 @@
+<div class="swiper-container">
+  <swiper [autoplay]="true" [navigation]="true" class="mySwiper" [loop]="true">
+    <ng-template swiperSlide
+      ><img src="assets/images/banner-1.jpg" alt=""
+    /></ng-template>
+    <ng-template swiperSlide
+      ><img src="assets/images/banner-2.jpg" alt=""
+    /></ng-template>
+    <ng-template swiperSlide
+      ><img src="assets/images/banner-3.jpg" alt=""
+    /></ng-template>
+  </swiper>
+</div>
+
+<app-product-list [products]="products"></app-product-list>

@@ -1,5 +1,5 @@
 <div class="login-container">
-  <div class="login">
+  <div class="login" *ngIf="!loading; else loadingView">
     <img src="assets/icons/user_plain.svg" alt="" />
     <form action="">
       <div>
@@ -11,8 +11,22 @@
         <label for="password">Password</label>
       </div>
     </form>
-    <button (click)="login()">Login</button>
+    <button (click)="selectUserType()">Login</button>
     <button routerLink="/register">Sing Up</button>
     <a href="">forgot my password</a>
+  </div>
+  <ng-template #loadingView>
+    <div class="login-loading">
+      <app-loading></app-loading>
+    </div>
+  </ng-template>
+  <div class="login__user-selection" *ngIf="userSelection">
+    <div>
+      <h3>Login as a:</h3>
+      <div class="button-container">
+        <button class="button" (click)="login(false)">User</button>
+        <button class="button" (click)="login(true)">Admin</button>
+      </div>
+    </div>
   </div>
 </div>

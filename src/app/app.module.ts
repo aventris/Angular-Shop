@@ -32,6 +32,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 
 import { SwiperModule } from 'swiper/angular';
 import { FooterComponent } from './components/footer/footer.component';
+import { CategoryComponent } from './components/category/category.component';
+import { HomeComponent } from './website/pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { FooterComponent } from './components/footer/footer.component';
     LayoutComponent,
     ConfirmationModalComponent,
     FooterComponent,
+    CategoryComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

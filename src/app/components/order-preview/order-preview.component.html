@@ -1,5 +1,8 @@
 <div class="order-preview">
-  <div>
+  <div
+    class="order-preview__container"
+    *ngIf="user && products.length > 0; else noLogin"
+  >
     <div class="products">
       <div class="product" *ngFor="let product of products">
         <div class="product-image">
@@ -18,40 +21,51 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="shipping">
-    <div class="shipping__container">
-      <h3>Ship to</h3>
-      <p><b>Ismael Perez Ortega Oh yeag</b></p>
-      <p><i>33 17 11 57 56</i></p>
-      <p><i>correomamalon-largohijodeputa@hotmail.com</i></p>
-      <br />
-      <p><b>Address</b></p>
-      <p>Av. Poniente 140, Dpto 66-A, 501</p>
-      <p>C.P. 07755</p>
-      <p>Ciudad de mexico, mexico</p>
-      <br />
-      <h3>Order Information</h3>
-      <div class="shipping__container-row">
-        <span>Products:</span>
-        <span>
-          <b>{{ "12000" | currency }}</b>
-        </span>
-      </div>
-      <div class="shipping__container-row">
-        <span>Shipping:</span>
-        <span>
-          <b>{{ "12000" | currency }}</b>
-        </span>
-      </div>
-      <div class="shipping__container-row shipping__container-row--last">
-        <span>Total:</span>
-        <span>
-          <b>{{ "12000" | currency }}</b>
-        </span>
-      </div>
+    <div class="shipping">
+      <div class="shipping__container">
+        <h3>Ship to</h3>
+        <p>
+          <b>{{ user.name.firstname + " " + user.name.lastname }}</b>
+        </p>
+        <p>
+          <i>{{ user.phone }}</i>
+        </p>
+        <p>
+          <i>{{ user.email }}</i>
+        </p>
+        <br />
+        <p><b>Address</b></p>
+        <p>{{ user.address.street + ", " + user.address.number }}</p>
+        <p>{{ user.address.zipcode }}</p>
+        <p>Texas, USA</p>
+        <br />
+        <h3>Order Information</h3>
+        <div class="shipping__container-row">
+          <span>Products:</span>
+          <span>
+            <b>{{ total | currency }}</b>
+          </span>
+        </div>
+        <div class="shipping__container-row">
+          <span>Shipping:</span>
+          <span>
+            <b>{{ 0 | currency }}</b>
+          </span>
+        </div>
+        <div class="shipping__container-row shipping__container-row--last">
+          <span>Total:</span>
+          <span>
+            <b>{{ total | currency }}</b>
+          </span>
+        </div>
 
-      <button>Procced to payment</button>
+        <button>Procced to payment</button>
+      </div>
     </div>
   </div>
+  <ng-template #noLogin>
+    <div class="order-preview__invalid">
+      <p>You're not logged in or you dont have products in your cart</p>
+    </div>
+  </ng-template>
 </div>
