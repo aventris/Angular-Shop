@@ -1,28 +1,45 @@
 <div>
   <div class="register">
     <h2>Create account</h2>
-    <form action="">
+    <form action="" [formGroup]="registerForm" (submit)="onSubmit($event)">
       <div class="input">
-        <input type="text" placeholder="Email" />
+        <input type="text" placeholder="_" formControlName="username" />
         <label for="">Username</label>
+        <div>
+          <span *ngIf="handleErrorMessage('username')"
+            >Username must contain at least 5 alphanumeric characters</span
+          >
+        </div>
       </div>
       <div class="input">
-        <input type="text" placeholder="Email" />
+        <input type="text" placeholder="_" />
         <label for="">Email</label>
+        <div *ngIf="handleErrorMessage('email')">
+          <span>Example: email@domain, email@domain.com </span>
+        </div>
       </div>
       <div class="form-row">
         <div class="input">
-          <input type="text" placeholder="Email" />
+          <input type="text" placeholder="_" formControlName="firstname" />
           <label for="">Name</label>
+          <div *ngIf="handleErrorMessage('firstname')">
+            <span>Invalid name </span>
+          </div>
         </div>
         <div class="input">
-          <input type="text" placeholder="Email" />
+          <input type="text" placeholder="_" formControlName="lastname" />
           <label for="">Lastname</label>
+          <div *ngIf="handleErrorMessage('lastname')">
+            <span>Invalid lastname</span>
+          </div>
         </div>
       </div>
       <div class="input">
-        <input type="text" placeholder="Email" />
+        <input type="text" placeholder="_" formControlName="phone" />
         <label for="">Phone</label>
+        <div *ngIf="handleErrorMessage('phone')">
+          <span>Phone number must be 8-12 numbers long</span>
+        </div>
       </div>
       <div>
         <p>
@@ -30,19 +47,62 @@
           alphanumeric and uppercase characters.
         </p>
         <div class="input">
-          <input type="text" placeholder="Email" />
+          <input type="text" placeholder="_" formControlName="password" />
           <label for="">Password</label>
+          <div *ngIf="handleErrorMessage('password')">
+            <span *ngIf="registerForm.controls['password'].hasError('length')"
+              >The password be at least <strong>8</strong> character</span
+            >
+            <span *ngIf="registerForm.controls['password'].hasError('numeric')"
+              >The password must contain at least one
+              <strong>numeric</strong> character</span
+            >
+            <span
+              *ngIf="registerForm.controls['password'].hasError('upperCase')"
+              >The password must contain at least one
+              <strong>uppercase</strong> character</span
+            >
+            <span
+              *ngIf="registerForm.controls['password'].hasError('lowerCase')"
+              >The password must contain at least one
+              <strong>lowercase</strong> character</span
+            >
+            <span
+              *ngIf="registerForm.controls['password'].hasError('blankSpace')"
+              >The password can't contain <strong>space</strong> character</span
+            >
+          </div>
         </div>
         <div class="input">
-          <input type="text" placeholder="Email" />
+          <input type="text" placeholder="_" formControlName="rpassword" />
           <label for="">Repeat password</label>
+          <div *ngIf="handleErrorMessage('rpassword')">
+            <span
+              *ngIf="
+                registerForm.controls['rpassword'].hasError('invalid');
+                else noMatch
+              "
+              >The password is invalid</span
+            >
+            <ng-template #noMatch>
+              <span>The passwords do not match</span>
+            </ng-template>
+          </div>
         </div>
       </div>
+      <button class="button" type="submit">Sign Up</button>
     </form>
-    <button>Sign Up</button>
     <p class="register__disclaimer">
       By clicking Sing Up, you are indicating that you have liked the page and
       want explore more.
     </p>
+  </div>
+</div>
+
+<div class="modal" *ngIf="success">
+  <div class="modal__content">
+    <h3>Successfully registered</h3>
+    <img src="assets/icons/success_tick.svg" alt="" />
+    <button routerLink="/login" class="button">Loggin</button>
   </div>
 </div>

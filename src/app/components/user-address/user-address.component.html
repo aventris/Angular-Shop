@@ -1,56 +1,102 @@
 <h2 class="user-title">Address infomration</h2>
 <div class="address" *ngIf="user">
   <div>
-    <form action="">
-      <div class="form-input">
-        <input
-          name="city"
-          type="text"
-          name="email"
-          placeholder="_"
-          [(ngModel)]="user.address.city"
-        />
+    <form action="" [formGroup]="form" (submit)="handleSubmit()">
+      <div class="input">
+        <input type="text" placeholder="_" formControlName="city" />
         <label for="">City</label>
+        <div *ngIf="error('city'); else validCity">
+          <span>This field is required</span>
+        </div>
+        <ng-template #validCity>
+          <div *ngIf="!formIsDisabled">
+            <span>Example: San Diego</span>
+          </div>
+        </ng-template>
       </div>
-      <div class="form-input">
+      <div class="input">
         <input
           name="street"
           type="text"
           placeholder="_"
-          [(ngModel)]="user.address.street"
+          formControlName="street"
         />
         <label for="">Address</label>
-        <span>Example: Moth bulevar 103-C </span>
+        <div *ngIf="error('street'); else validStreet">
+          <span *ngIf="form.controls['street'].hasError('required')"
+            >This field is required
+          </span>
+        </div>
+        <ng-template #validStreet>
+          <div *ngIf="!formIsDisabled">
+            <span>Example: Moth bulevar 103-C</span>
+          </div>
+        </ng-template>
       </div>
-      <div class="form-input">
+      <div class="input">
         <input
           name="number"
           type="text"
           placeholder="_"
-          [(ngModel)]="user.address.number"
+          formControlName="number"
         />
         <label for="">Apartment,suite,etc.</label>
-        <span>Example: 3rd floor </span>
+        <div *ngIf="error('number'); else validNumber">
+          <span> This field is required </span>
+        </div>
+        <ng-template #validNumber>
+          <div *ngIf="!formIsDisabled">
+            <span>Example: 3rd floor, 1198-A </span>
+          </div>
+        </ng-template>
       </div>
-      <div class="form-input">
+      <div class="input">
         <input
           name="zip"
           type="text"
           placeholder="_"
-          [(ngModel)]="user.address.zipcode"
+          formControlName="zipcode"
         />
         <label for="">Zipcode</label>
+        <div *ngIf="error('zipcode'); else validZip">
+          <span *ngIf="form.controls['zipcode'].hasError('required')">
+            This field is required
+          </span>
+          <span *ngIf="form.controls['zipcode'].hasError('pattern')">
+            Example: 1125-0025. 07898
+          </span>
+        </div>
+
+        <ng-template #validZip>
+          <div *ngIf="!formIsDisabled">
+            <span>Example: 1125-0025. 07898</span>
+          </div>
+        </ng-template>
       </div>
-      <div class="form-input">
-        <input
-          name="zip"
-          type="text"
-          value="green house right on the corner"
-          placeholder="_"
-        />
+      <div class="input">
+        <input name="info" type="text" placeholder="_" formControlName="info" />
         <label for="">Aditional info</label>
+        <div *ngIf="error('info'); else validInfo">
+          <span> This field is required </span>
+        </div>
+        <ng-template #validInfo>
+          <div *ngIf="!formIsDisabled">
+            <span>Example: Between a drugstore and a blue building</span>
+          </div>
+        </ng-template>
       </div>
+      <button *ngIf="formIsDisabled" class="button" (click)="enableForm()">
+        Edit address
+      </button>
+      <button *ngIf="!formIsDisabled" class="button" type="submit">Send</button>
     </form>
-    <button class="button">Edit address</button>
+  </div>
+</div>
+
+<div class="modal" *ngIf="alert">
+  <div class="modal__content">
+    <h3>Successfully registered</h3>
+    <img src="assets/icons/success_tick.svg" alt="" />
+    <button routerLink="/user/profile" class="button">Ok</button>
   </div>
 </div>

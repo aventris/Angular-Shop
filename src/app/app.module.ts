@@ -35,6 +35,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CategoryComponent } from './components/category/category.component';
 import { HomeComponent } from './website/pages/home/home.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +73,7 @@ import { HomeComponent } from './website/pages/home/home.component';
     HttpClientModule,
     FormsModule,
     SwiperModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

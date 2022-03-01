@@ -17,6 +17,7 @@ body {
   --blue-color: #007185;
   --card-shadow: #a0a0a0;
   --box-shadow: 1px 1px 5px #a0a0a0;
+  --input-disabled-color: #999999;
 }
 
 .user-title {
@@ -24,19 +25,22 @@ body {
   margin-top: 0;
   color: var(--blue-color);
 }
-.button {
+button {
   display: block;
-  margin: 0 auto;
-  width: 150px;
-  background-color: #acd9b2;
   height: 40px;
+  width: 200px;
+  margin: 0 auto;
+  background-color: var(--green-color);
+  border: none;
   border-radius: 5px;
   color: white;
-  border: none;
   cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 3px grey;
+  }
 }
 
-.form-input {
+.input {
   min-height: 35px;
   margin: 0 0 20px 0;
   position: relative;
@@ -62,6 +66,28 @@ body {
       left: 0;
       font-size: 12px;
     }
+    &:disabled {
+      color: var(--input-disabled-color);
+      border-color: var(--input-disabled-color);
+      & ~ label {
+        color: var(--input-disabled-color);
+      }
+    }
+    &.ng-invalid.ng-dirty,
+    &.ng-invalid.ng-touched {
+      border-color: #dc3545;
+      & ~ label,
+      & ~ div {
+        color: #dc3545;
+      }
+    }
+    &.ng-valid {
+      border-color: #28a745;
+      & ~ label,
+      & ~ div {
+        color: #28a745;
+      }
+    }
   }
   label {
     transition: 0.2s;
@@ -70,12 +96,12 @@ body {
     left: 10px;
     color: grey;
   }
-  span {
+  div {
     position: absolute;
-    bottom: -5px;
-    left: 10px;
-    font-size: 12px;
+    bottom: -3px;
+    left: 2px;
     color: grey;
+    font-size: 10px;
   }
   a {
     position: absolute;
@@ -88,4 +114,17 @@ body {
       text-decoration: underline;
     }
   }
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(black, 0.3);
 }

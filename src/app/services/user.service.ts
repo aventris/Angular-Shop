@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-
-import { User } from '../models/user.model';
+import { Md5 } from 'ts-md5';
+import { User, RegisterUser, UpdateUser } from '../models/user.model';
 import { tap } from 'rxjs/operators';
 
 import { Auth } from '../models/auth.model';
@@ -37,6 +37,47 @@ export class UserService {
   }
   getOne(id: string) {
     return this.http.get<User>(`${API}/users/${id}`);
+  }
+
+  create(user: any) {
+    const newUser: RegisterUser = {
+      email: user?.email,
+      username: user.username,
+      password: Md5.hashStr(String(user.password)),
+      name: {
+        firstname: user.firstname,
+        lastname: user.firstname,
+      },
+      address: {
+        city: '',
+        street: '',
+        number: 0,
+        zipcode: '',
+        geolocation: {
+          lat: '',
+          long: '',
+        },
+      },
+      phone: user.phone,
+    };
+    return this.http.post(`${API}/users`, newUser);
+  }
+
+  update(id: number, user: any) {
+    const newInfo = {
+      username: user.username,
+      phone: user.phone,
+
+      name: {
+        firstname: user.firstname,
+        lastname: user.lastname,
+      },
+      address: {
+        geolocation: {},
+      },
+    };
+    console.log(newInfo);
+    return this.http.patch(`${API}/users/${id}`, newInfo);
   }
 
   saveToken(token: string, id: number) {

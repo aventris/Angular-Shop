@@ -14,6 +14,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { CategoryComponent } from './components/category/category.component';
 import { HomeComponent } from './website/pages/home/home.component';
 
+import { AuthGuard } from './guard/auth.guard';
 const routes: Routes = [
   {
     path: '',
@@ -47,10 +48,12 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'register',
         component: RegisterComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'checkout',

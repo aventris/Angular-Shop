@@ -1,31 +1,83 @@
 <h2 class="user-title">{{ user.name.firstname + "'s profile" }}</h2>
 <div class="info" *ngIf="user">
   <img [src]="avatarUrl" alt="profile-image" class="info__image" />
-  <div>
-    <div class="form-input">
-      <input type="text" placeholder="_" [(ngModel)]="user.name.firstname" />
-      <label for="">First name</label>
+
+  <form action="" [formGroup]="form" (ngSubmit)="handleSubmit($event)">
+    <div>
+      <div class="input">
+        <input type="text" placeholder="_" formControlName="firstname" />
+        <label for="">First name</label>
+        <div *ngIf="handleErrorMessage('firstname')">
+          <span *ngIf="form.controls['firstname'].hasError('pattern')"
+            >Invalid name
+          </span>
+          <span *ngIf="form.controls['firstname'].hasError('required')"
+            >This field is required</span
+          >
+        </div>
+      </div>
+      <div class="input">
+        <input type="text" placeholder="_" formControlName="lastname" />
+        <label for="">Last name</label>
+        <div *ngIf="handleErrorMessage('lastname')">
+          <span *ngIf="form.controls['lastname'].hasError('pattern')"
+            >Invalid name
+          </span>
+          <span *ngIf="form.controls['lastname'].hasError('required')"
+            >This field is required</span
+          >
+        </div>
+      </div>
     </div>
-    <div class="form-input">
-      <input type="text" placeholder="_" [(ngModel)]="user.name.lastname" />
-      <label for="">Last name</label>
+    <div class="input">
+      <input type="text" placeholder="_" formControlName="username" />
+      <label for="">Username</label>
+      <div *ngIf="handleErrorMessage('username')">
+        <span *ngIf="form.controls['username'].hasError('pattern')"
+          >Invalid username
+        </span>
+        <span *ngIf="form.controls['username'].hasError('required')"
+          >This field is required</span
+        >
+      </div>
     </div>
-  </div>
-  <div class="form-input">
-    <input type="text" placeholder="_" [(ngModel)]="user.username" />
-    <label for="">Username</label>
-  </div>
-  <div class="form-input">
-    <input type="text" placeholder="_" [(ngModel)]="user.email" />
-    <label for="">Email</label>
-  </div>
-  <div class="form-input">
-    <input type="text" placeholder="_" [(ngModel)]="user.phone" />
-    <label for="">Phone</label>
-  </div>
-  <div class="form-input">
-    <input disabled value="********" type="text" />
-    <label for="">Password</label>
-    <a (click)="onClick()">Change password</a>
+    <div class="input">
+      <input type="text" placeholder="_" disabled [value]="user.email" />
+      <label for="">Email</label>
+    </div>
+    <div class="input">
+      <input type="text" placeholder="_" formControlName="phone" />
+      <label for="">Phone</label>
+      <div *ngIf="handleErrorMessage('phone')">
+        <span *ngIf="form.controls['phone'].hasError('pattern')"
+          >Invalid phone
+        </span>
+        <span *ngIf="form.controls['phone'].hasError('required')"
+          >This field is required</span
+        >
+      </div>
+    </div>
+    <div class="input">
+      <input disabled value="********" type="text" />
+      <label for="">Password</label>
+      <a (click)="onChangePassword()">Change password</a>
+    </div>
+    <button
+      (click)="enableForm()"
+      class="button"
+      *ngIf="formIsDisabled; else enabled"
+    >
+      Update information
+    </button>
+    <ng-template #enabled>
+      <button type="submit" class="button">Send</button>
+    </ng-template>
+  </form>
+</div>
+<div class="modal" *ngIf="alert">
+  <div class="modal__content">
+    <h3>Information was updated</h3>
+    <img src="assets/icons/success_tick.svg" alt="" />
+    <button (click)="handleConfirmation()" class="button">Ok</button>
   </div>
 </div>

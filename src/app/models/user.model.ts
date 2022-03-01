@@ -14,8 +14,15 @@ export interface User {
     zipcode: string;
     geolocation: {
       lat: string;
-      longstring: string;
+      long: string;
     };
   };
   phone: string;
 }
+
+export interface RegisterUser extends Omit<User, 'id'> {
+  firstname?: string;
+  lastname?: string;
+}
+
+export interface UpdateUser extends Partial<User> {}
