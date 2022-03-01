@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectUserType() {
-    this.userSelection = true;
+  toggleUserSelection() {
+    this.userSelection = !this.userSelection;
   }
 
   login(admin: boolean) {

@@ -11,7 +11,7 @@
         <label for="password">Password</label>
       </div>
     </form>
-    <button (click)="selectUserType()">Login</button>
+    <button (click)="toggleUserSelection()">Login</button>
     <button routerLink="/register">Sing Up</button>
     <a href="">forgot my password</a>
   </div>
@@ -27,6 +27,11 @@
         <button class="button" (click)="login(false)">User</button>
         <button class="button" (click)="login(true)">Admin</button>
       </div>
+      <img
+        (click)="toggleUserSelection()"
+        src="assets/icons/close_icon.svg"
+        alt=""
+      />
     </div>
   </div>
 </div>

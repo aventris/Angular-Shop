@@ -8,7 +8,8 @@
 }
 
 .user-info {
-  width: 500px;
+  width: 70vw;
+  max-width: 550px;
   height: 550px;
   padding: 1px;
   box-shadow: var(--box-shadow);
@@ -34,16 +35,20 @@
   text-align: center;
 }
 .user-menu {
-  width: 200px;
+  width: 20vw;
+  max-width: 200px;
   box-shadow: var(--box-shadow);
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
     li {
-      height: 30px;
+      word-spacing: 0%;
+      display: block;
+      min-height: 30px;
       line-height: 30px;
       width: 100%;
+      padding: 3px 5px;
       display: block;
       text-align: center;
       border-bottom: 1px solid rgb(216, 216, 216);
@@ -59,5 +64,20 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 590px) {
+  .profile {
+    width: 100%;
+    div {
+      width: 100%;
+    }
+  }
+  .user-menu {
+    display: none;
+  }
+  .user-info {
+    width: 100%;
   }
 }

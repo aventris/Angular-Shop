@@ -88,19 +88,28 @@
 }
 
 .login__user-selection {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: var(--header-height);
   left: 0;
-  width: 100%;
-  height: 100%;
+  bottom: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(black, 0.3);
   text-align: center;
   div {
+    position: relative;
     background-color: white;
     border-radius: 10px;
+  }
+  img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
   }
 }
 
@@ -111,5 +120,22 @@
   align-items: center;
   button {
     margin: 0 10px;
+  }
+}
+
+@media (max-width: 590px) {
+  .login__user-selection {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .login {
+    width: 100%;
   }
 }

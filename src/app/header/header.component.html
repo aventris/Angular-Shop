@@ -1,20 +1,41 @@
 <nav class="header">
   <div class="header__mobile">
-    <img
-      class="header__logo"
-      routerLink="/home"
-      src="assets/icons/logo_yard_sale.svg"
-      alt="menu_icon"
-    />
-    <ul>
-      <li>Item 1</li>
-      <li>Item 1</li>
-      <li>Item 1</li>
+    <ul *ngIf="menuOpen">
+      <li routerLinkActive="active" (click)="toggleMenu()" routerLink="/home">
+        <p>Home</p>
+      </li>
+      <li
+        routerLinkActive="active"
+        (click)="toggleMenu()"
+        routerLink="/category/women's clothing"
+      >
+        <p>Women's clothing</p>
+      </li>
+      <li
+        routerLinkActive="active"
+        (click)="toggleMenu()"
+        routerLink="/category/men's clothing"
+      >
+        <p>Men's clothing</p>
+      </li>
+      <li
+        routerLinkActive="active"
+        (click)="toggleMenu()"
+        routerLink="/category/electronics"
+      >
+        Electronics
+      </li>
+      <li
+        routerLinkActive="active"
+        (click)="toggleMenu()"
+        routerLink="/category/jewelery"
+      >
+        Jewelery
+      </li>
     </ul>
   </div>
   <img
-    class="header__logo"
-    routerLink="/home"
+    (click)="toggleMenu()"
     src="assets/icons/logo_yard_sale.svg"
     alt="store_icon"
   />
@@ -35,16 +56,85 @@
     </ul>
   </div>
   <div class="header__user">
-    <p *ngIf="this.user">{{ this.user.username }}</p>
+    <p class="header__username" *ngIf="this.user">{{ this.user.username }}</p>
     <img
+      *ngIf="user; else loginDesktop"
+      class="header__usermenu-desktop"
       [routerLink]="user ? ['/user/profile'] : ['/login']"
       src="assets/icons/default_avatar.svg"
       alt="user_icon"
     />
+    <img
+      *ngIf="user; else login"
+      class="header__usermenu-mobile"
+      (click)="toggleUserMenu()"
+      src="assets/icons/default_avatar.svg"
+      alt="user_icon"
+    />
+    <ng-template #login>
+      <button class="button login-button" routerLink="/login">Login</button>
+    </ng-template>
+    <ng-template #loginDesktop>
+      <button class="button login-button-desktop" routerLink="/login">
+        Login
+      </button>
+    </ng-template>
     <div class="header__cart" (click)="toggleCart()">
       <img src="assets/icons/shoppong_cart_icon.svg" alt="user_icon" />
       <p *ngIf="totalProducts">{{ totalProducts | truncatecart }}</p>
     </div>
+
+    <nav class="header-usermenu" *ngIf="userMenu">
+      <ul *ngIf="user; else noSession">
+        <li
+          routerLink="/user/profile"
+          [queryParams]="{ tab: 'profile' }"
+          [class.active]="isActive('profile')"
+          (click)="toggleUserMenu()"
+        >
+          General information
+        </li>
+        <li
+          routerLink="/user/profile"
+          [queryParams]="{ tab: 'address' }"
+          [class.active]="isActive('address')"
+          (click)="toggleUserMenu()"
+        >
+          Address
+        </li>
+        <li
+          routerLink="/user/profile"
+          [queryParams]="{ tab: 'password' }"
+          [class.active]="isActive('password')"
+          (click)="toggleUserMenu()"
+        >
+          Change password
+        </li>
+        <li
+          routerLink="/user/profile"
+          [queryParams]="{ tab: 'orders' }"
+          [class.active]="isActive('orders')"
+          (click)="toggleUserMenu()"
+        >
+          Order history
+        </li>
+        <li
+          routerLink="/user/profile"
+          [queryParams]="{ tab: 'admin' }"
+          [class.active]="isActive('admin')"
+          *ngIf="isAdmin"
+          (click)="toggleUserMenu()"
+        >
+          Admin page
+        </li>
+        <li (click)="logout()">Logout</li>
+      </ul>
+      <ng-template #noSession>
+        <button class="button" routerLink="/login" (click)="toggleUserMenu()">
+          Login
+        </button>
+      </ng-template>
+    </nav>
   </div>
 </nav>
 <app-cart-list

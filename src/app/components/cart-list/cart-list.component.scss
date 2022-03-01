@@ -7,7 +7,7 @@ $green-color: #acd9b2;
   top: 0;
   right: 0;
   padding: 5px;
-  z-index: 2;
+  z-index: 4;
   & > p {
     display: block;
     width: 100%;
@@ -15,6 +15,7 @@ $green-color: #acd9b2;
     line-height: 40px;
     margin: 0;
     text-align: center;
+    border-bottom: 1px solid #a1a1a1;
   }
   &__close {
     cursor: pointer;
@@ -53,6 +54,7 @@ $green-color: #acd9b2;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
+    border-top: 1px solid #a1a1a1;
   }
   button {
     display: block;
@@ -67,5 +69,21 @@ $green-color: #acd9b2;
     &:hover {
       box-shadow: 0 0 2px grey;
     }
+  }
+}
+
+@media (max-width: 590px) {
+  .cartview {
+    position: fixed;
+    width: 100%;
+    height: calc(100vh - 50px);
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 }

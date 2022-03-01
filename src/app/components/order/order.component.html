@@ -7,9 +7,14 @@
       <div class="order__product-info">
         <h3 class="order__product-title">{{ product.title }}</h3>
         <p class="order__product-status">Available</p>
-        <p class="order__product-description">{{ product.description }}</p>
+        <p class="order__product-description-mobile">
+          {{ product.description | slice: 0:150 }}
+        </p>
+        <p class="order__product-description">
+          {{ product.description }}
+        </p>
         <p class="order__product-price">
-          Price: <b>{{ product.quantity | currency }}</b>
+          Price: <b>{{ product.quantity }}</b>
         </p>
         <div class="order__product-menu">
           <div class="order__product-quantity">

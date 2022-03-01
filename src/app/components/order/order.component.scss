@@ -51,6 +51,9 @@ $green-color: var(--green-color);
     &-description {
       color: #7c7c7c;
       font-size: 12px;
+      &-mobile {
+        display: none;
+      }
     }
     &-price {
       text-align: right;
@@ -100,6 +103,7 @@ $green-color: var(--green-color);
   &__total {
     max-width: 700px;
     margin: 10px auto;
+    padding: 10px;
     border-radius: 10px;
     background-color: rgb(236, 236, 236);
     text-align: center;
@@ -114,7 +118,7 @@ $green-color: var(--green-color);
     button {
       width: 150px;
       height: 40px;
-      margin: 0 0 10px 0;
+      margin: 0 auto;
       border: none;
       border-radius: 5px;
       color: white;
@@ -124,5 +128,14 @@ $green-color: var(--green-color);
         box-shadow: 0 0 2px grey;
       }
     }
+  }
+}
+
+@media (max-width: 590px) {
+  .order__product-description-mobile {
+    display: block;
+  }
+  .order__product-description {
+    display: none;
   }
 }

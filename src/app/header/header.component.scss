@@ -5,9 +5,11 @@ $green-color: #acd9b2;
   width: 100%;
   height: 50px;
   border-bottom: 1px solid grey;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 3;
   &__logo {
     width: 150px;
     margin: 0 10px;
@@ -52,13 +54,35 @@ $green-color: #acd9b2;
   }
   &__mobile {
     display: none;
-    background-color: chocolate;
+    width: 100%;
+    background-color: white;
     position: absolute;
-    top: 40px;
+    top: 50px;
+    img {
+      width: 50%;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 3px 5px;
+        margin: 5px 0;
+        text-align: center;
+        p {
+          margin: 0;
+        }
+        &.active {
+          border: 1px solid $green-color;
+          color: $green-color;
+        }
+      }
+    }
   }
   &__user {
     display: flex;
-    min-width: 0;
+    min-width: 130px;
     margin: 0;
     padding: 0;
     padding-right: 5px;
@@ -77,9 +101,10 @@ $green-color: #acd9b2;
         cursor: pointer;
       }
     }
-    & > p {
+    &_username {
       min-width: 80px;
-      padding: 0 10px;
+      max-width: 50px;
+      padding: 0 2px;
       margin: 0;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -121,13 +146,67 @@ $green-color: #acd9b2;
   }
 }
 
-@media (max-width: 587px) {
+.header-usermenu {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  padding: 10px;
+  ul {
+    list-style: none;
+    padding: none;
+    text-align: center;
+    li {
+      padding: 3px 5px;
+      border: 1px solid white;
+      border-radius: 5px;
+      &:last-child {
+        color: red;
+      }
+      &.active {
+        border-color: var(--green-color);
+      }
+    }
+  }
+}
+
+.header__usermenu-mobile {
+  display: none !important;
+}
+
+.login-button {
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.login-button-desktop {
+  display: none !important;
+}
+@media (max-width: 590px) {
   .header {
+    position: fixed;
+    top: 0;
+    right: 0;
     &__desktop {
       display: none;
     }
     &__mobile {
       display: block;
     }
+
+    &__usermenu {
+      &-desktop {
+        display: none !important;
+      }
+      &-mobile {
+        display: block !important;
+      }
+    }
+  }
+  .login-button-desktop {
+    display: none !important;
   }
 }

@@ -1,5 +1,6 @@
 .info {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   margin: 0 auto;
   div {
     display: flex;
@@ -37,5 +38,11 @@
       height: 50px;
       margin-bottom: 19px;
     }
+  }
+}
+
+@media (max-width: 590px) {
+  .info {
+    width: 100%;
   }
 }
