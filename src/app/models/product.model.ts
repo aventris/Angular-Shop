@@ -1,5 +1,5 @@
 export interface Product {
-  id: string;
+  id: number;
   title: string;
   price: number;
   category: string;
@@ -14,3 +14,5 @@ export interface Product {
 export interface CartProduct extends Product {
   quantity: number;
 }
+
+export interface RegisterProduct extends Partial<Product> {}

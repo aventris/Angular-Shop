@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { UserService } from '../../services/user.service';
-
+import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-login',
@@ -13,7 +13,11 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   userSelection: boolean = false;
 
-  constructor(private user: UserService, private location: Location) {}
+  constructor(
+    private user: UserService,
+    private location: Location,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -33,7 +37,8 @@ export class LoginComponent implements OnInit {
     const id = admin ? environment.ADMIN_USER_ID : environment.USER_ID;
 
     this.user.login(user, password, id).subscribe((_) => {
-      this.location.back();
+      if (admin) this.router.navigateByUrl('/user/profile?tab=admin');
+      else this.location.back();
     });
   }
 }

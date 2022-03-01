@@ -5,17 +5,25 @@
       <div class="input">
         <input type="text" placeholder="_" formControlName="username" />
         <label for="">Username</label>
-        <div>
-          <span *ngIf="handleErrorMessage('username')"
+        <div *ngIf="handleErrorMessage('username')">
+          <span *ngIf="registerForm.controls['username'].hasError('pattern')"
             >Username must contain at least 5 alphanumeric characters</span
+          >
+          <span *ngIf="registerForm.controls['username'].hasError('required')"
+            >This field is required</span
           >
         </div>
       </div>
       <div class="input">
-        <input type="text" placeholder="_" />
+        <input type="text" placeholder="_" formControlName="email" />
         <label for="">Email</label>
         <div *ngIf="handleErrorMessage('email')">
-          <span>Example: email@domain, email@domain.com </span>
+          <span *ngIf="registerForm.controls['email'].hasError('email')"
+            >Example: email@domain, email@domain.com</span
+          >
+          <span *ngIf="registerForm.controls['email'].hasError('required')"
+            >This field is required</span
+          >
         </div>
       </div>
       <div class="form-row">
@@ -23,14 +31,25 @@
           <input type="text" placeholder="_" formControlName="firstname" />
           <label for="">Name</label>
           <div *ngIf="handleErrorMessage('firstname')">
-            <span>Invalid name </span>
+            <span *ngIf="registerForm.controls['firstname'].hasError('pattern')"
+              >Invalid name</span
+            >
+            <span
+              *ngIf="registerForm.controls['firstname'].hasError('required')"
+              >This field is required</span
+            >
           </div>
         </div>
         <div class="input">
           <input type="text" placeholder="_" formControlName="lastname" />
           <label for="">Lastname</label>
           <div *ngIf="handleErrorMessage('lastname')">
-            <span>Invalid lastname</span>
+            <span *ngIf="registerForm.controls['lastname'].hasError('pattern')"
+              >Invalid lastname</span
+            >
+            <span *ngIf="registerForm.controls['lastname'].hasError('required')"
+              >This field is required</span
+            >
           </div>
         </div>
       </div>
@@ -47,9 +66,12 @@
           alphanumeric and uppercase characters.
         </p>
         <div class="input">
-          <input type="text" placeholder="_" formControlName="password" />
+          <input type="password" placeholder="_" formControlName="password" />
           <label for="">Password</label>
           <div *ngIf="handleErrorMessage('password')">
+            <span *ngIf="registerForm.controls['password'].hasError('required')"
+              >This field is required</span
+            >
             <span *ngIf="registerForm.controls['password'].hasError('length')"
               >The password be at least <strong>8</strong> character</span
             >
@@ -74,7 +96,7 @@
           </div>
         </div>
         <div class="input">
-          <input type="text" placeholder="_" formControlName="rpassword" />
+          <input type="password" placeholder="_" formControlName="rpassword" />
           <label for="">Repeat password</label>
           <div *ngIf="handleErrorMessage('rpassword')">
             <span

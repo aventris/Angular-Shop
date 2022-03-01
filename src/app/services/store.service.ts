@@ -25,13 +25,13 @@ export class StoreService {
     this.cart.next(this.shoppingCart);
   }
 
-  removeProduct(id: string) {
+  removeProduct(id: number) {
     let index = this.shoppingCart.findIndex((item) => item.id === id);
     this.shoppingCart.splice(index, 1);
     this.cart.next(this.shoppingCart);
   }
 
-  increaseQuantity(id: string) {
+  increaseQuantity(id: number) {
     let index = this.shoppingCart.findIndex((item) => item.id === id);
     if (index !== -1) {
       this.shoppingCart[index].quantity;
@@ -42,7 +42,7 @@ export class StoreService {
       this.cart.next(this.shoppingCart);
     }
   }
-  decreaseQuantity(id: string) {
+  decreaseQuantity(id: number) {
     let index = this.shoppingCart.findIndex((item) => item.id === id);
     if (this.shoppingCart[index].quantity > 1) {
       if (index !== -1) {

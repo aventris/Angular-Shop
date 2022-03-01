@@ -1,68 +1,88 @@
-<div class="product">
-  <div *ngIf="product; else noproduct" class="product__form">
-    <h2 class="title">Update product information</h2>
-    <form action="">
-      <div class="input">
-        <input
-          disabled
-          name="id"
-          type="text"
-          placeholder="_"
-          [value]="product.id"
-        />
-        <label for="">Product ID</label>
-      </div>
-      <div class="input">
-        <input
-          name="name"
-          type="text"
-          placeholder="_"
-          [(ngModel)]="product.title"
-        />
-        <label for="">Product name</label>
-      </div>
-      <div class="input">
-        <input
-          name="price"
-          type="text"
-          placeholder="_"
-          [(ngModel)]="product.price"
-        />
-        <label for="">Price</label>
-      </div>
-      <div class="input">
-        <input
-          name="category"
-          type="text"
-          placeholder="_"
-          value="green house right on the corner"
-        />
-        <label for="">Category</label>
-      </div>
-      <div class="input">
-        <input
-          name="description"
-          type="text"
-          placeholder="_"
-          value="green house right on the corner"
-        />
-        <label for="">Description</label>
-      </div>
-      <div class="input__image">
-        <p>Product image</p>
-        <img [src]="selectedFile || product.image" alt="" />
-        <input
-          name="image"
-          type="file"
-          accept=".png,.jpg,.svg,.jpg,.jpeg"
-          #imageInput
-          (change)="hanldeImageUpload(imageInput)"
-        />
-      </div>
-    </form>
-    <button class="button">Edit product</button>
+<app-loading *ngIf="loading; else content"></app-loading>
+<ng-template #content>
+  <div class="product">
+    <div *ngIf="product || !edit; else noproduct" class="product__form">
+      <h2 class="title">Update product information</h2>
+      <form action="" [formGroup]="form" (submit)="handleSubmit()">
+        <div class="input" *ngIf="edit">
+          <input
+            disabled
+            name="id"
+            type="text"
+            placeholder="_"
+            [value]="product?.id"
+          />
+          <label for="">Product ID</label>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" formControlName="title" />
+          <label for="">Name</label>
+          <div *ngIf="error('title')">
+            <!-- <span *ngIf="form.controls['title'].hasError('title')"
+            >Example: email@domain, email@domain.com</span
+            > -->
+            <span *ngIf="form.controls['title'].hasError('required')"
+              >This field is required</span
+            >
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" formControlName="price" />
+          <label for="">Price</label>
+          <div *ngIf="error('price')">
+            <span *ngIf="form.controls['price'].hasError('pattern')"
+              >Invalid price, example: 11.01, 875</span
+            >
+            <span *ngIf="form.controls['price'].hasError('required')"
+              >This field is required</span
+            >
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" formControlName="category" />
+          <label for="">Category</label>
+          <div *ngIf="error('category')">
+            <span *ngIf="form.controls['category'].hasError('required')"
+              >This field is required</span
+            >
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" formControlName="description" />
+          <label for="">Description</label>
+          <div *ngIf="error('description')">
+            <span *ngIf="form.controls['description'].hasError('required')"
+              >This field is required</span
+            >
+          </div>
+        </div>
+
+        <div class="input__image">
+          <p>Product image</p>
+          <img [src]="selectedFile || product?.image || ''" alt="" />
+          <input
+            name="image"
+            type="file"
+            accept=".png,.jpg,.svg,.jpg,.jpeg"
+            #imageInput
+            (change)="hanldeImageUpload(imageInput)"
+          />
+        </div>
+        <button class="button" type="submit">
+          {{ edit ? "Update Product" : "Add product" }}
+        </button>
+      </form>
+    </div>
+    <ng-template #noproduct>
+      <div class="product__no-found">No product with where found</div>
+    </ng-template>
   </div>
-  <ng-template #noproduct>
-    <div class="product__no-found">No product with where found</div>
-  </ng-template>
+</ng-template>
+
+<div class="modal" *ngIf="alert">
+  <div class="modal__content">
+    <h3>{{ edit ? "Product Updated" : "Product added" }}</h3>
+    <img src="/assets/icons/success_tick.svg" alt="" />
+    <button routerLink="/admin/products" class="button">Ok</button>
+  </div>
 </div>

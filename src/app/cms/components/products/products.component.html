@@ -1,46 +1,82 @@
-<div class="products">
-  <h2 class="tittle">Products list</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>image</th>
-        <th>Price</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>*</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.id }}</td>
-        <td><img class="product_image" [src]="product.image" alt="" /></td>
-        <td>{{ product.price | currency }}</td>
-        <td>{{ product.title }}</td>
-        <td>{{ product.category }}</td>
-        <td>
-          <button [routerLink]="['/admin/products/edit', product.id]">
-            <img src="assets/icons/edit_pencil_icon.svg" alt="" /></button
-          ><button>
-            <img src="assets/icons/delete_white.svg" alt="" />
-          </button>
-        </td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="100%">
-          <div class="pagination">
-            <button>
-              <img src="assets/icons/less_than_icon.svg" alt="" />
-            </button>
-            <p>1/10</p>
-            <button>
-              <img src="assets/icons/greater_than_icon.svg" alt="" />
-            </button>
-          </div>
-        </th>
-      </tr>
-    </tfoot>
-  </table>
+<app-loading *ngIf="loading; else content"></app-loading>
+<ng-template #content>
+  <div class="products">
+    <h2 class="tittle">Products list</h2>
+    <p>
+      <button class="button" routerLink="/admin/products/add">
+        + New product
+      </button>
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>image</th>
+          <th>Price</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>*</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td><img class="product_image" [src]="product.image" alt="" /></td>
+          <td>{{ product.price | currency }}</td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.category }}</td>
+          <td>
+            <div class="button-container">
+              <button [routerLink]="['/admin/products/edit', product.id]">
+                <img src="assets/icons/edit_pencil_icon.svg" alt="" /></button
+              ><button (click)="handleConfirmation(product.id)">
+                <img src="assets/icons/delete_white.svg" alt="" />
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="100%">
+            <div class="pagination">
+              <button>
+                <img src="assets/icons/less_than_icon.svg" alt="" />
+              </button>
+              <p>1/1</p>
+              <button>
+                <img src="assets/icons/greater_than_icon.svg" alt="" />
+              </button>
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</ng-template>
+
+<div class="modal" *ngIf="alert">
+  <div class="modal__content">
+    <h3>Product deleted</h3>
+    <img src="assets/icons/success_tick.svg" alt="" />
+    <button (click)="handleAlert()" class="button">Ok</button>
+  </div>
+</div>
+
+<div class="modal" *ngIf="confirmation">
+  <div class="modal__content">
+    <h3>Are you sure you want to delete this product?</h3>
+    <p></p>
+    <div>
+      <button
+        class="button confirmation-button cancel-button"
+        (click)="handleConfirmation()"
+      >
+        Cancel
+      </button>
+      <button class="button confirmation-button" (click)="handleDelete()">
+        Ok
+      </button>
+    </div>
+  </div>
 </div>

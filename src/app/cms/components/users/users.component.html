@@ -1,49 +1,76 @@
-<div class="users">
-  <h2 class="tittle">Users list</h2>
-  <table>
-    <thead>
-      <tr>
-        <th class="column_id">ID</th>
-        <th class="column_user">User</th>
-        <th class="column_name">Name</th>
-        <th class="column_lastname">Lastname</th>
-        <th class="column_email">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.id }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ user.name.firstname }}</td>
-        <td>{{ user.name.lastname }}</td>
-        <td>{{ user.email }}</td>
-        <td>
-          <button>
-            <img
-              [routerLink]="['/admin/users/edit', user.id]"
-              src="assets/icons/edit_pencil_icon.svg"
-              alt=""
-            /></button
-          ><button>
-            <img src="assets/icons/delete_white.svg" alt="" />
-          </button>
-        </td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="100%">
-          <div class="pagination">
-            <button>
-              <img src="assets/icons/less_than_icon.svg" alt="" />
-            </button>
-            <p>1/10</p>
-            <button>
-              <img src="assets/icons/greater_than_icon.svg" alt="" />
-            </button>
-          </div>
-        </th>
-      </tr>
-    </tfoot>
-  </table>
+<app-loading *ngIf="loading; else content"></app-loading>
+<ng-template #content>
+  <div class="users">
+    <h2 class="tittle">Users list</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="column_id">ID</th>
+          <th class="column_user">User</th>
+          <th class="column_name">Name</th>
+          <th class="column_lastname">Lastname</th>
+          <th class="column_email">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.name.firstname }}</td>
+          <td>{{ user.name.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <div class="button-container">
+              <button [routerLink]="['/admin/users/edit', user.id]">
+                <img src="assets/icons/edit_pencil_icon.svg" alt="" /></button
+              ><button (click)="handleConfirmation(user.id)">
+                <img src="assets/icons/delete_white.svg" alt="" />
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="100%">
+            <div class="pagination">
+              <button>
+                <img src="assets/icons/less_than_icon.svg" alt="" />
+              </button>
+              <p>1/1</p>
+              <button>
+                <img src="assets/icons/greater_than_icon.svg" alt="" />
+              </button>
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</ng-template>
+
+<div class="modal" *ngIf="alert">
+  <div class="modal__content">
+    <h3>User deleted</h3>
+    <img src="assets/icons/success_tick.svg" alt="" />
+    <button (click)="handleAlert()" class="button">Ok</button>
+  </div>
+</div>
+
+<div class="modal" *ngIf="confirmation">
+  <div class="modal__content">
+    <h3>Are you sure you want to delete this user?</h3>
+    <p></p>
+    <div>
+      <button
+        class="button confirmation-button cancel-button"
+        (click)="handleConfirmation()"
+      >
+        Cancel
+      </button>
+      <button class="button confirmation-button" (click)="handleDelete()">
+        Ok
+      </button>
+    </div>
+  </div>
 </div>

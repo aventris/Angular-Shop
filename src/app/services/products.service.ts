@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { Product } from '../models/product.model';
+import { Product, RegisterProduct } from '../models/product.model';
 
 const apiUrl = 'https://fakestoreapi.com/products';
 
@@ -29,5 +29,12 @@ export class ProductsService {
     return this.http.get<Product[]>(`${apiUrl}/category/${category}`, {
       params,
     });
+  }
+
+  create(product: RegisterProduct) {
+    return this.http.post(`${apiUrl}`, product);
+  }
+  delete(id: number) {
+    return this.http.delete(`${apiUrl}/${id}`);
   }
 }

@@ -1,77 +1,165 @@
-<div class="user-account">
-  <div class="info" *ngIf="user">
-    <p>Account information</p>
-    <div>
-      <div class="input">
-        <input type="text" placeholder="_" [(ngModel)]="user.name.firstname" />
-        <label for="">First name</label>
-      </div>
-      <div class="input">
-        <input type="text" placeholder="_" [(ngModel)]="user.name.lastname" />
-        <label for="">Last name</label>
-      </div>
-    </div>
-    <div class="input">
-      <input type="text" placeholder="_" [(ngModel)]="user.username" />
-      <label for="">Username</label>
-    </div>
-    <div class="input">
-      <input type="text" placeholder="_" [(ngModel)]="user.email" />
-      <label for="">Email</label>
-    </div>
-    <div class="input">
-      <input type="text" placeholder="_" [(ngModel)]="user.phone" />
-      <label for="">Phone</label>
-    </div>
-    <p>Address information</p>
-    <div class="input">
-      <input
-        name="city"
-        type="text"
-        name="email"
-        placeholder="_"
-        [(ngModel)]="user.address.city"
-      />
-      <label for="">City</label>
-    </div>
-    <div class="input">
-      <input
-        name="street"
-        type="text"
-        placeholder="_"
-        [(ngModel)]="user.address.street"
-      />
-      <label for="">Address</label>
-      <span>Example: Moth bulevar 103-C </span>
-    </div>
-    <div class="input">
-      <input
-        name="number"
-        type="text"
-        placeholder="_"
-        [(ngModel)]="user.address.number"
-      />
-      <label for="">Apartment,suite,etc.</label>
-      <span>Example: 3rd floor </span>
-    </div>
-    <div class="input">
-      <input
-        name="zip"
-        type="text"
-        placeholder="_"
-        [(ngModel)]="user.address.zipcode"
-      />
-      <label for="">Zipcode</label>
-    </div>
-    <div class="input">
-      <input
-        name="zip"
-        type="text"
-        value="green house right on the corner"
-        placeholder="_"
-      />
-      <label for="">Aditional info</label>
+<app-loading *ngIf="loading; else content"></app-loading>
+<ng-template #content>
+  <div class="user-account">
+    <div class="info" *ngIf="user">
+      <form action="" [formGroup]="form" (submit)="handleSubmit()">
+        <p>Account information</p>
+        <div>
+          <div class="input">
+            <input type="text" placeholder="_" formControlName="firstname" />
+            <label for="">First name</label>
+            <div *ngIf="handleErrorMessage('firstname')">
+              <span *ngIf="form.controls['firstname'].hasError('pattern')"
+                >Invalid name
+              </span>
+              <span *ngIf="form.controls['firstname'].hasError('required')"
+                >This field is required</span
+              >
+            </div>
+          </div>
+          <div class="input">
+            <input type="text" placeholder="_" formControlName="lastname" />
+            <label for="">Last name</label>
+            <div *ngIf="handleErrorMessage('lastname')">
+              <span *ngIf="form.controls['lastname'].hasError('pattern')"
+                >Invalid name
+              </span>
+              <span *ngIf="form.controls['lastname'].hasError('required')"
+                >This field is required</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" formControlName="username" />
+          <label for="">Username</label>
+          <div *ngIf="handleErrorMessage('username')">
+            <span *ngIf="form.controls['username'].hasError('pattern')"
+              >Invalid username
+            </span>
+            <span *ngIf="form.controls['username'].hasError('required')"
+              >This field is required</span
+            >
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" formControlName="email" />
+          <label for="">Email</label>
+          <div *ngIf="handleErrorMessage('email')">
+            <span>This field is required</span>
+          </div>
+        </div>
+        <div class="input">
+          <input type="text" placeholder="_" formControlName="phone" />
+          <label for="">Phone</label>
+          <div *ngIf="handleErrorMessage('phone')">
+            <span *ngIf="form.controls['phone'].hasError('pattern')"
+              >Invalid phone
+            </span>
+            <span *ngIf="form.controls['phone'].hasError('required')"
+              >This field is required</span
+            >
+          </div>
+        </div>
+        <p>Address information</p>
+        <div class="input">
+          <input type="text" placeholder="_" formControlName="city" />
+          <label for="">City</label>
+          <div *ngIf="handleErrorMessage('city'); else validCity">
+            <span>This field is required</span>
+          </div>
+          <ng-template #validCity>
+            <div>
+              <span>Example: San Diego</span>
+            </div>
+          </ng-template>
+        </div>
+        <div class="input">
+          <input
+            name="street"
+            type="text"
+            placeholder="_"
+            formControlName="street"
+          />
+          <label for="">Address</label>
+          <div *ngIf="handleErrorMessage('street'); else validStreet">
+            <span *ngIf="form.controls['street'].hasError('required')"
+              >This field is required
+            </span>
+          </div>
+          <ng-template #validStreet>
+            <div>
+              <span>Example: Moth bulevar 103-C</span>
+            </div>
+          </ng-template>
+        </div>
+        <div class="input">
+          <input
+            name="number"
+            type="text"
+            placeholder="_"
+            formControlName="number"
+          />
+          <label for="">Apartment,suite,etc.</label>
+          <div *ngIf="handleErrorMessage('number'); else validNumber">
+            <span> This field is required </span>
+          </div>
+          <ng-template #validNumber>
+            <div>
+              <span>Example: 3rd floor, 1198-A </span>
+            </div>
+          </ng-template>
+        </div>
+        <div class="input">
+          <input
+            name="zip"
+            type="text"
+            placeholder="_"
+            formControlName="zipcode"
+          />
+          <label for="">Zipcode</label>
+          <div *ngIf="handleErrorMessage('zipcode'); else validZip">
+            <span *ngIf="form.controls['zipcode'].hasError('required')">
+              This field is required
+            </span>
+            <span *ngIf="form.controls['zipcode'].hasError('pattern')">
+              Example: 1125-0025. 07898
+            </span>
+          </div>
+
+          <ng-template #validZip>
+            <div>
+              <span>Example: 1125-0025. 07898</span>
+            </div>
+          </ng-template>
+        </div>
+        <div class="input">
+          <input
+            name="info"
+            type="text"
+            placeholder="_"
+            formControlName="info"
+          />
+          <label for="">Aditional info</label>
+          <div *ngIf="handleErrorMessage('info'); else validInfo">
+            <span> This field is required </span>
+          </div>
+          <ng-template #validInfo>
+            <div>
+              <span>Example: Between a drugstore and a blue building</span>
+            </div>
+          </ng-template>
+        </div>
+        <button type="submit" class="button">Update user</button>
+      </form>
     </div>
   </div>
-  <button class="button">Update user</button>
+</ng-template>
+
+<div class="modal" *ngIf="alert">
+  <div class="modal__content">
+    <h3>User updated</h3>
+    <img src="assets/icons/success_tick.svg" alt="" />
+    <button routerLink="/admin/users" class="button">Ok</button>
+  </div>
 </div>

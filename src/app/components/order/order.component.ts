@@ -33,14 +33,14 @@ export class OrderComponent implements OnInit {
     );
   }
 
-  increaseQuantity(id: string) {
+  increaseQuantity(id: number) {
     this.storeService.increaseQuantity(id);
   }
-  decreaseQuantity(id: string) {
+  decreaseQuantity(id: number) {
     this.storeService.decreaseQuantity(id);
   }
 
-  removeProduct(id: string) {
+  removeProduct(id: number) {
     this.storeService.removeProduct(id);
   }
 

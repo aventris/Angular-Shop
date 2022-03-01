@@ -28,6 +28,12 @@ const routes: Routes = [
       {
         path: 'products/edit/:id',
         component: ProductFormComponent,
+        data: { edit: true },
+      },
+      {
+        path: 'products/add',
+        component: ProductFormComponent,
+        data: { edit: false },
       },
       {
         path: 'users',

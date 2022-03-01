@@ -11,9 +11,11 @@ import { GeneralInfoComponent } from './components/general-info/general-info.com
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 import { FormsModule } from '@angular/forms';
 
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     MenuComponent,
@@ -25,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     OrderFormComponent,
     ProductFormComponent,
     UserFormComponent,
+    LoadingComponent,
   ],
-  imports: [CommonModule, CmsRoutingModule, FormsModule],
+  imports: [CommonModule, CmsRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class CmsModule {}

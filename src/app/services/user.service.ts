@@ -21,7 +21,6 @@ export class UserService {
   user$ = this.user.asObservable();
 
   login(username: string, password: string, id: number) {
-    console.log({ username, password });
     return this.http
       .post<Auth>(`${API}/auth/login`, { username, password })
       .pipe(tap((response) => this.saveToken(response.token, id)));
@@ -76,10 +75,12 @@ export class UserService {
         geolocation: {},
       },
     };
-    console.log(newInfo);
     return this.http.patch(`${API}/users/${id}`, newInfo);
   }
 
+  delete(id: number) {
+    return this.http.delete(`${API}/users/${id}`);
+  }
   saveToken(token: string, id: number) {
     this.cookieService.set('USER_TOKEN', token);
     this.cookieService.set('USER_ID', id.toString()); // User

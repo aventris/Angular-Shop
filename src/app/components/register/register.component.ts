@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
+  FormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { Router } from '@angular/router';
+
+import { InputValidationsService } from '../../services/input-validations.service';
 
 @Component({
   selector: 'app-register',
@@ -15,62 +17,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  registerForm!: FormGroup;
   success = false;
-  registerForm = this.formBuilder.group({
-    username: [
-      '',
-      Validators.compose([Validators.required, Validators.pattern(/^\w{5,}$/)]),
-    ],
-    email: ['', Validators.compose([Validators.required, Validators.email])],
-    firstname: [
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]{2,}$/),
-      ]),
-    ],
-    lastname: [
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]{2,}$/),
-      ]),
-    ],
-    phone: [
-      '',
-      Validators.compose([
-        Validators.required,
-        Validators.pattern(/^\d{8,12}$/),
-      ]),
-    ],
-    password: ['', [Validators.required, this.validatePassword()]],
-    rpassword: ['', [Validators.required, this.ValidateRepeatPassword()]],
-  });
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private router: Router
-  ) {}
+    private inputValidationsService: InputValidationsService
+  ) {
+    this.createForm();
+  }
 
   ngOnInit(): void {}
 
   onSubmit(event: Event) {
     event.preventDefault();
-    console.log('Submitting...');
-    //if (this.registerForm.valid) {
-    const user = this.registerForm.value;
-    this.userService.create(user).subscribe((data) => {
-      if (data) this.success = true;
-    });
-    //}
+    this.touchFields();
+    if (this.registerForm.valid) {
+      const user = this.registerForm.value;
+      this.userService.create(user).subscribe((data) => {
+        if (data) this.success = true;
+      });
+    }
   }
 
   handleErrorMessage(input: string) {
-    return (
-      this.registerForm.controls[input].invalid &&
-      (this.registerForm.controls[input].touched ||
-        this.registerForm.controls[input].dirty)
+    return this.inputValidationsService.handleErrorMessage(
+      this.registerForm,
+      input
     );
+  }
+
+  touchFields() {
+    Object.keys(this.registerForm.value).forEach((input) => {
+      this.registerForm.controls[input].markAsTouched();
+    });
   }
 
   validatePassword(): ValidatorFn {
@@ -102,5 +83,43 @@ export class RegisterComponent implements OnInit {
       }
       return null;
     };
+  }
+
+  createForm() {
+    //if (this.registerForm) {
+    this.registerForm = this.formBuilder.group({
+      username: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/^\w{5,}$/),
+        ]),
+      ],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      firstname: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]{2,}$/),
+        ]),
+      ],
+      lastname: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/^[A-Za-záéíóúÁÉÍÓÚñÑ]{2,}$/),
+        ]),
+      ],
+      phone: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/^\d{8,12}$/),
+        ]),
+      ],
+      password: ['', [Validators.required, this.validatePassword()]],
+      rpassword: ['', [Validators.required, this.ValidateRepeatPassword()]],
+    });
+    //  }
   }
 }
