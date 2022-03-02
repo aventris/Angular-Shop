@@ -16,12 +16,16 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { OrderComponent } from './pages/order/order.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
 import { SharedModule } from '../shared/shared.module';
 import { TruncatecartPipe } from './pipes/truncatecart.pipe';
+import { OrderPreviewComponent } from './pages/order-preview/order-preview.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +42,17 @@ import { TruncatecartPipe } from './pipes/truncatecart.pipe';
     CheckoutComponent,
     OrderAddressComponent,
     LayoutComponent,
+    CategoryComponent,
+    OrderComponent,
+    RegisterComponent,
+    OrderPreviewComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
     WebsiteRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     SwiperModule,
     SharedModule,
   ],

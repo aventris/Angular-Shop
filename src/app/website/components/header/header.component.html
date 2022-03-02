@@ -35,25 +35,30 @@
     </ul>
   </div>
   <img
+    class="menubutton-mobile"
     (click)="toggleMenu()"
     src="assets/icons/logo_yard_sale.svg"
     alt="store_icon"
   />
+  <img
+    class="menubutton-desktop"
+    routerLink="/home"
+    src="assets/icons/logo_yard_sale.svg"
+    alt="store_icon"
+  />
   <div class="header__desktop">
-    <ul>
-      <li routerLinkActive="active" routerLink="/category/women's clothing">
-        <p>Women's clothing</p>
-      </li>
-      <li routerLinkActive="active" routerLink="/category/men's clothing">
-        <p>Men's clothing</p>
-      </li>
-      <li routerLinkActive="active" routerLink="/category/electronics">
-        Electronics
-      </li>
-      <li routerLinkActive="active" routerLink="/category/jewelery">
-        Jewelery
-      </li>
-    </ul>
+    <span routerLinkActive="active" routerLink="/category/women's clothing">
+      Women's clothing
+    </span>
+    <span routerLinkActive="active" routerLink="/category/men's clothing">
+      Men's clothing
+    </span>
+    <span routerLinkActive="active" routerLink="/category/electronics">
+      Electronics
+    </span>
+    <span routerLinkActive="active" routerLink="/category/jewelery">
+      Jewelery
+    </span>
   </div>
   <div class="header__user">
     <p class="header__username" *ngIf="this.user">{{ this.user.username }}</p>

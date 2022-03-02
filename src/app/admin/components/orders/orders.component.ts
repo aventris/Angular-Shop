@@ -14,7 +14,6 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderService.getAll().subscribe((data) => {
-      console.log(data);
       this.orders = data;
     });
   }

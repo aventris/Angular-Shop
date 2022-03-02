@@ -39,7 +39,6 @@ export class UserPasswordComponent implements OnInit {
     if (this.form.valid) {
       this.alert = true;
     } else {
-      console.log(Object.keys(this.form.controls));
       Object.keys(this.form.controls).forEach((input) => {
         const control = this.form.get(input);
         if (control) control.markAllAsTouched();
@@ -91,7 +90,6 @@ export class UserPasswordComponent implements OnInit {
       if (this.form) {
         const primary = this.form.controls['password'].value;
         const secoundary = control.value;
-        console.log('Val: ', secoundary);
         if (secoundary) {
           return primary !== secoundary ? { doNotMatch: true } : null;
         }

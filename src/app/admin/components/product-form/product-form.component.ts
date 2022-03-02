@@ -99,7 +99,6 @@ export class ProductFormComponent implements OnInit {
       category: [category, Validators.required],
       description: [description, Validators.required],
     });
-    console.log(this.edit);
     this.loading = false;
   }
 

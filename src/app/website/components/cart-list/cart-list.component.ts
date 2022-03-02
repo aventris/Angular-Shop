@@ -23,7 +23,6 @@ export class CartListComponent implements OnInit {
   }
 
   onClose() {
-    console.log('Closing');
     this.toggleCart.emit('');
   }
 }

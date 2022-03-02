@@ -17,38 +17,39 @@ $green-color: #acd9b2;
     cursor: pointer;
   }
   &__desktop {
-    ul {
+    max-width: 500px;
+    flex-shrink: 0.5;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    span {
+      max-width: 150px;
+      padding: 5px 10px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      text-align: center;
       display: flex;
-      justify-content: center;
+      flex-direction: row;
       align-items: center;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      li {
-        padding: 5px 10px;
-        border: 1px solid transparent;
-        border-radius: 5px;
+      display: block;
+      cursor: pointer;
+      flex-shrink: 1;
 
-        text-align: center;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        cursor: pointer;
-        p {
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        &:hover {
-          border: 1px solid $green-color;
-          color: $green-color;
-        }
-        &.active {
-          border: 1px solid $green-color;
-          color: $green-color;
-        }
+      &:first-child,
+      &:nth-child(2) {
+        flex-shrink: 0.5;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &:hover {
+        border: 1px solid $green-color;
+        color: $green-color;
+      }
+      &.active {
+        border: 1px solid $green-color;
+        color: $green-color;
       }
     }
   }
@@ -56,6 +57,7 @@ $green-color: #acd9b2;
     display: none;
     width: 100%;
     background-color: white;
+    box-shadow: 0 0 10px #838383;
     position: absolute;
     top: 50px;
     img {
@@ -82,6 +84,7 @@ $green-color: #acd9b2;
   }
   &__user {
     display: flex;
+    flex-shrink: 1;
     min-width: 130px;
     margin: 0;
     padding: 0;
@@ -185,6 +188,20 @@ $green-color: #acd9b2;
 .login-button-desktop {
   display: none !important;
 }
+
+.menubutton {
+  &-mobile {
+    margin-left: 10px;
+    cursor: pointer;
+    display: none;
+  }
+  &-desktop {
+    margin-left: 10px;
+    cursor: pointer;
+    display: block;
+    flex-shrink: 1;
+  }
+}
 @media (max-width: 590px) {
   .header {
     position: fixed;
@@ -204,6 +221,14 @@ $green-color: #acd9b2;
       &-mobile {
         display: block !important;
       }
+    }
+  }
+  .menubutton {
+    &-mobile {
+      display: block;
+    }
+    &-desktop {
+      display: none;
     }
   }
   .login-button-desktop {

@@ -21,6 +21,5 @@ export class CartItemComponent implements OnInit {
   }
   removeProduct() {
     this.storeService.removeProduct(this.product.id);
-    console.log('Remove');
   }
 }

@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.userService.user$.subscribe((data) => {
       this.user = data;
-      console.log(data);
     });
     this.storeService.shoppingCart$.subscribe((data) => {
       this.totalProducts = data.reduce(

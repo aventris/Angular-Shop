@@ -27,7 +27,6 @@ export class UserProfileComponent implements OnInit {
     });
     this.userService.user$.subscribe((data) => {
       if (data) {
-        console.log(data);
         this.user = data;
         if (data.id === environment.ADMIN_USER_ID) {
           this.isAdmin = true;

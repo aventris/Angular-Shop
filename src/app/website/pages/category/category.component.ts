@@ -24,7 +24,6 @@ export class CategoryComponent implements OnInit {
         })
       )
       .subscribe((data) => {
-        console.log(data);
         this.products = data;
       });
   }

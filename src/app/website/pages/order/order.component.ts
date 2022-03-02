@@ -45,7 +45,6 @@ export class OrderComponent implements OnInit {
   }
 
   handleClick() {
-    console.log('click');
     let token = this.userService.getToken();
 
     if (!token) {
