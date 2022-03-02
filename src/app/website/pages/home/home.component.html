@@ -12,4 +12,7 @@
   </swiper>
 </div>
 
-<app-product-list [products]="products"></app-product-list>
+<app-loading *ngIf="loading; else content"></app-loading>
+<ng-template #content>
+  <app-product-list [products]="products"></app-product-list>
+</ng-template>

@@ -13,26 +13,29 @@
       </ul>
     </nav>
     <div class="user-info">
-      <!-- <h2 class="user-info__title">Change current password</h2> -->
-      <div *ngIf="user; else noSession" [ngSwitch]="tab">
-        <app-user-info
-          [onTabChange]="onTabChange"
-          [user]="user"
-          *ngSwitchDefault
-        ></app-user-info>
-        <app-user-address
-          [user]="user"
-          *ngSwitchCase="'address'"
-        ></app-user-address>
-        <app-user-password
-          [user]="user"
-          *ngSwitchCase="'password'"
-        ></app-user-password>
-        <app-user-orders *ngSwitchCase="'orders'"></app-user-orders>
-        <app-user-admin *ngSwitchCase="'admin'"></app-user-admin>
-      </div>
-      <ng-template #noSession>
-        <div class="no-user"><p>You're not logged in</p></div>
+      <app-loading *ngIf="loading; else content"></app-loading>
+      <ng-template #content>
+        <!-- <h2 class="user-info__title">Change current password</h2> -->
+        <div *ngIf="user; else noSession" [ngSwitch]="tab">
+          <app-user-info
+            [onTabChange]="onTabChange"
+            [user]="user"
+            *ngSwitchDefault
+          ></app-user-info>
+          <app-user-address
+            [user]="user"
+            *ngSwitchCase="'address'"
+          ></app-user-address>
+          <app-user-password
+            [user]="user"
+            *ngSwitchCase="'password'"
+          ></app-user-password>
+          <app-user-orders *ngSwitchCase="'orders'"></app-user-orders>
+          <app-user-admin *ngSwitchCase="'admin'"></app-user-admin>
+        </div>
+        <ng-template #noSession>
+          <div class="no-user"><p>You're not logged in</p></div>
+        </ng-template>
       </ng-template>
     </div>
   </div>

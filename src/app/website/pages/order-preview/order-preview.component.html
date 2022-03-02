@@ -59,7 +59,7 @@
           </span>
         </div>
 
-        <button>Procced to payment</button>
+        <button (click)="togglePayment()">Procced to payment</button>
       </div>
     </div>
   </div>
@@ -69,3 +69,5 @@
     </div>
   </ng-template>
 </div>
+
+<app-paypal *ngIf="payment" (closeWindow)="togglePayment()"></app-paypal>

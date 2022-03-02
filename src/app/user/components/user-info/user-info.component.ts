@@ -20,7 +20,6 @@ export class UserInfoComponent implements OnInit {
   @Input() onTabChange!: (id: string) => void;
   avatarUrl: string | null = null;
   formIsDisabled = true;
-  loading = false;
   alert = false;
   form!: FormGroup;
 

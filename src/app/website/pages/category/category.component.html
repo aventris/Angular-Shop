@@ -1,6 +1,9 @@
-<div *ngIf="products; else noproducts">
-  <app-product-list [products]="products"></app-product-list>
-</div>
-<ng-template #noproducts>
-  <div>No products were found</div>
+<app-loading *ngIf="loading; else content"></app-loading>
+<ng-template #content>
+  <div *ngIf="products; else noproducts">
+    <app-product-list [products]="products"></app-product-list>
+  </div>
+  <ng-template #noproducts>
+    <div>No products were found</div>
+  </ng-template>
 </ng-template>

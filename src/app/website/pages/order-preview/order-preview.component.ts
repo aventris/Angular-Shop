@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CartProduct } from '../../../models/product.model';
 import { Router } from '@angular/router';
 import { StoreService } from '../../../services/store.service';
@@ -11,6 +11,7 @@ import { User } from '../../../models/user.model';
   styleUrls: ['./order-preview.component.scss'],
 })
 export class OrderPreviewComponent implements OnInit {
+  payment: boolean | undefined = false;
   products: CartProduct[] = [];
   user: User | null = null;
   total = 0;
@@ -30,5 +31,9 @@ export class OrderPreviewComponent implements OnInit {
     this.userService.user$.subscribe((data) => {
       this.user = data;
     });
+  }
+
+  togglePayment() {
+    this.payment = !this.payment;
   }
 }

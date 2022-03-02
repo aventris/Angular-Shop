@@ -10,6 +10,7 @@ import { ProductsService } from '../../../services/products.service';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
+  loading: boolean = true;
   products: Product[] | null = null;
 
   constructor(
@@ -25,6 +26,7 @@ export class CategoryComponent implements OnInit {
       )
       .subscribe((data) => {
         this.products = data;
+        this.loading = false;
       });
   }
 

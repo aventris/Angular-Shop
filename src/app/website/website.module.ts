@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { WebsiteRoutingModule } from './website-routing.module';
 
-import { PaymentComponent } from './pages/payment/payment.component';
 import { OrderAddressComponent } from './pages/order-address/order-address.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -26,6 +25,7 @@ import { SharedModule } from '../shared/shared.module';
 import { TruncatecartPipe } from './pipes/truncatecart.pipe';
 import { OrderPreviewComponent } from './pages/order-preview/order-preview.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,6 @@ import { LoginComponent } from './pages/login/login.component';
     FooterComponent,
     CartListComponent,
     CartItemComponent,
-    PaymentComponent,
     HomeComponent,
     TruncatecartPipe,
     CheckoutComponent,
@@ -47,6 +46,7 @@ import { LoginComponent } from './pages/login/login.component';
     RegisterComponent,
     OrderPreviewComponent,
     LoginComponent,
+    PaypalComponent,
   ],
   imports: [
     CommonModule,

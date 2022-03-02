@@ -8,11 +8,12 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
-
+  loading: boolean = true;
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.productsService.getAll().subscribe((data) => {
+      this.loading = false;
       this.products = data;
     });
   }

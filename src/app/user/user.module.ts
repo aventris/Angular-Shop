@@ -10,6 +10,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 import { UserPasswordComponent } from './components/user-password/user-password.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,12 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     UserPasswordComponent,
     UserProfileComponent,
   ],
-  imports: [CommonModule, UserRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
+  ],
 })
 export class UserModule {}

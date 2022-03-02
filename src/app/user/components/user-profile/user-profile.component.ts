@@ -12,14 +12,16 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
+  user: User | null = null;
+  loading: boolean = true;
+  isAdmin = false;
+  public tab = '';
+
   constructor(
     private userService: UserService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
-  user: User | null = null;
-  isAdmin = false;
-  public tab = '';
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((data) => {
@@ -32,6 +34,7 @@ export class UserProfileComponent implements OnInit {
           this.isAdmin = true;
         }
       }
+      this.loading = false;
     });
   }
 
